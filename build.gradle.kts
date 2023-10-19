@@ -6,6 +6,17 @@ plugins {
 	kotlin("jvm") version "1.8.22"
 	kotlin("plugin.spring") version "1.8.22"
 	kotlin("plugin.jpa") version "1.8.22"
+	// FIXME: needed?
+	kotlin("plugin.allopen") version "1.8.22"
+}
+
+// FIXME: needed?
+allOpen {
+	annotations(
+		"jakarta.persistence.Entity",
+		"jakarta.persistence.MappedSuperclass",
+		"jakarta.persistence.Embeddable",
+	)
 }
 
 group = "fr"
