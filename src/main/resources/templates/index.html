@@ -3,7 +3,15 @@
 <head>
     <title>Pauges Janes</title>
     <link rel="stylesheet" th:href="@{/bulma.min.css}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
+
+    </style>
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
@@ -15,9 +23,7 @@
     <button class="button is-danger is-rounded is-large">ATNNTETNENTNETIOONNN</button>
     /*/-->
     <div th:replace="fragments/home :: div"></div>
-
 </main>
 
-<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
