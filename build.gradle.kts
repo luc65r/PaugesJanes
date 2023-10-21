@@ -49,6 +49,7 @@ dependencies {
 	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6")
 	implementation("org.webjars:webjars-locator-core")
 	implementation("org.webjars.npm:bulma:0.9.4")
+	implementation("org.webjars.npm:fortawesome__fontawesome-free:5.15.4")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("com.h2database:h2")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
