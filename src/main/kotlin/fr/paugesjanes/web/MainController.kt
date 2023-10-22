@@ -8,4 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping
 class MainController {
     @GetMapping("/")
     fun index(model: Model): String = "main/index"
+
+    @GetMapping("/search")
+    fun search(model: Model):String = "main/search"
+
+
 }
+
