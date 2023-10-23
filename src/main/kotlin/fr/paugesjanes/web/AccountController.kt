@@ -2,6 +2,8 @@ package fr.paugesjanes.web
 
 import fr.paugesjanes.User
 import fr.paugesjanes.UserRepository
+import fr.paugesjanes.constraints.EmailFree
+import fr.paugesjanes.constraints.UsernameFree
 import jakarta.validation.Valid
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotNull
@@ -62,6 +64,7 @@ class AccountController(
 data class RegistrationInfo(
     @field:NotNull
     @field:Size(min = 2, max = 32)
+    @UsernameFree
     val username: String? = null,
 
     @field:NotNull
@@ -73,9 +76,10 @@ data class RegistrationInfo(
 
     @field:NotNull
     @field:Email
+    @EmailFree
     val email: String? = null,
 
     @field:NotNull
-    @field:Size(min = 1, max = 64)
+    @field:Size(min = 2, max = 64)
     val fullName: String? = null,
 )
