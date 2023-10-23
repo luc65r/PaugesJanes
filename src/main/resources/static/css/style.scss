@@ -6,9 +6,18 @@ $fa-font-path: "/webjars/fortawesome__fontawesome-free/webfonts";
 @import "scss/solid.scss";
 @import "scss/regular.scss";
 
+$content-heading-color: white;
+$footer-background-color: white;
+
 @import "bulma.sass";
 
 .yellow-button {
   background-color: #FFEC00; /* Set the desired background color, e.g., a yellow color */
   color: #000; /* Set the text color for contrast */
+}
+
+.has-background {
+  background-image: url("../img/fond_a_propos.jpeg");
+  background-size: cover;
+  background-attachment: fixed;
 }
