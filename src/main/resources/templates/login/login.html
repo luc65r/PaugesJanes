@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+
+    </style>
 </head>
 <body>
+<div th:replace="fragments/header :: header"></div>
+
 <h1>Connexion</h1>
 <div th:if="${param.error}">
     Nom d'utilisateur ou mot de passe invalide.
