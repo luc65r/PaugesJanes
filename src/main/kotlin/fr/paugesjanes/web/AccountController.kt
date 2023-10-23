@@ -3,6 +3,8 @@ package fr.paugesjanes.web
 import fr.paugesjanes.User
 import fr.paugesjanes.UserRepository
 import fr.paugesjanes.constraints.EmailFree
+import fr.paugesjanes.constraints.EnableFieldMatchConstraint
+import fr.paugesjanes.constraints.FieldMatch
 import fr.paugesjanes.constraints.UsernameFree
 import jakarta.validation.Valid
 import jakarta.validation.constraints.Email
@@ -61,25 +63,27 @@ class AccountController(
     }
 }
 
+@EnableFieldMatchConstraint
 data class RegistrationInfo(
     @field:NotNull
-    @field:Size(min = 2, max = 32)
-    @UsernameFree
+    @field:Size(min = 2, max = 32, message = "Le nom d’utilisateur doit être composé de 2 à 32 caractères")
+    @UsernameFree(message = "Nom d’utilisateur non disponible")
     val username: String? = null,
 
     @field:NotNull
-    @field:Size(min = 8, max = 64)
+    @field:Size(min = 8, max = 64, message = "Le mot de passe doit être composé de 8 à 64 caractères")
     val password: String? = null,
 
     @field:NotNull
+    @FieldMatch(otherField = "password", message = "La confirmation ne correspond pas au mot de passe")
     var passwordConfirmation: String? = null,
 
     @field:NotNull
-    @field:Email
-    @EmailFree
+    @field:Email(message = "Adresse e-mail non valide")
+    @EmailFree(message = "Adresse e-mail non disponible")
     val email: String? = null,
 
     @field:NotNull
-    @field:Size(min = 2, max = 64)
+    @field:Size(min = 2, max = 64, message = "Le nom complet doit être composé de 2 à 32 caractères")
     val fullName: String? = null,
 )
