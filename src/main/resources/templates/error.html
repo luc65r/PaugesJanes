@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Erreur [[${status}]]</title>
+</head>
+<body>
+<section class="hero is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="box column is-4 is-offset-4">
+                <h1 class="title">Erreur [[${status}]]</h1>
+                <div class="block">
+                    <p th:text="${error}"></p>
+                </div>
+                <div class="block">
+                    <a class="button is-primary" th:href="@{/}">Revenir à l'accueil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section th:if="${trace}" class="section">
+    <pre th:text="${trace}"></pre>
+</section>
+</body>
+</html>
