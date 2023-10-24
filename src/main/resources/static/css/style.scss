@@ -6,8 +6,13 @@ $fa-font-path: "/webjars/fortawesome__fontawesome-free/webfonts";
 @import "scss/solid.scss";
 @import "scss/regular.scss";
 
+/* footer */
+$footer-background-color: #6e6e6e;
+$footer-color: #ffffff;
+$footer-padding: 40px;
+
+/* a_propos */
 $content-heading-color: white;
-$footer-background-color: white;
 
 @import "bulma.sass";
 
@@ -20,4 +25,8 @@ $footer-background-color: white;
   background-image: url("../img/fond_a_propos.jpeg");
   background-size: cover;
   background-attachment: fixed;
+}
+
+.has-text-white {
+  color: white;
 }
