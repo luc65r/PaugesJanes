@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 </head>
 <body>
@@ -39,13 +39,20 @@
 
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button yellow-button" th:href="@{/register}">
-                            <strong>Inscription</strong>
-                        </a>
-                        <a class="button is-light" th:href="@{/login}">
-                            Connexion
-                        </a>
+                    <div th:switch="${#authorization.expression('isAuthenticated()')}">
+                        <div th:case="${true}" class="buttons">
+                            <a class="button is-light" th:href="@{/logout}">
+                                Déconnexion
+                            </a>
+                        </div>
+                        <div th:case="${false}" class="buttons">
+                            <a class="button yellow-button" th:href="@{/register}">
+                                <strong>Inscription</strong>
+                            </a>
+                            <a class="button is-light" th:href="@{/login}">
+                                Connexion
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
