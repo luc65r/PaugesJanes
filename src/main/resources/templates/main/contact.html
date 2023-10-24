@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Contact</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    <div class="box column is-6 is-offset-3">
+        <!-- Champs Nom/Prenom -->
+        <div class="field">
+            <label class="label">Nom / Prenom</label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="input is-success" type="text" placeholder="Comment vous appelez vous ?">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Champs Email -->
+        <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="input is-danger" type="email" placeholder="Inserez votre email">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- Champs Sujet -->
+        <div class="field">
+            <label class="label">Sujet</label>
+            <div class="control">
+                <div class="select">
+                    <select>
+                        <option>De quoi souhaitez vous nous parler ?</option>
+                        <option>Compte utilisateur</option>
+                        <option>Partenariats</option>
+                        <option>Signaler un bug</option>
+                        <option>Autres</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message -->
+        <div class="field">
+            <label class="label">Message</label>
+            <div class="control">
+                <textarea class="textarea" placeholder="C'est à quel sujet ?"></textarea>
+            </div>
+        </div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link">Envoyer</button>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

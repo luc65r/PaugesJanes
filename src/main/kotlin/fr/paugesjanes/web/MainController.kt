@@ -11,4 +11,8 @@ class MainController {
 
     @GetMapping("/a_propos")
     fun aPropos(): String = "main/a_propos"
+
+    @GetMapping("/contact")
+    fun contact(): String = "main/contact"
+
 }
