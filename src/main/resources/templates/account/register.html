@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Inscription</title>
+</head>
+<body>
+<section class="hero is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="box column is-4 is-offset-4">
+                <h1 class="title">Inscription</h1>
+                <div th:each="error : ${#fields.errors('*')}" th:text="${error}" class="notification is-danger"></div>
+                <form th:action="@{/register}" th:object="${registrationInfo}" method="post">
+                    <div class="field">
+                        <label class="label">Nom d'utilisateur</label>
+                        <div class="control has-icons-left">
+                            <input type="text" th:field="*{username}" required th:errorclass="is-danger" class="input"/>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="help is-danger"></p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Nom complet</label>
+                        <div class="control has-icons-left">
+                            <input type="text" th:field="*{fullName}" required th:errorclass="is-danger" class="input"/>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" class="help is-danger"></p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Adresse e-mail</label>
+                        <div class="control has-icons-left">
+                            <input type="email" th:field="*{email}" required th:errorclass="is-danger" class="input"/>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="help is-danger"></p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Mot de passe</label>
+                        <div class="control has-icons-left">
+                            <input type="password" th:field="*{password}" required th:errorclass="is-danger" class="input"/>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:errorclass="is-danger" class="help is-danger"></p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Confirmation du mot de passe</label>
+                        <div class="control has-icons-left">
+                            <input type="password" th:field="*{passwordConfirmation}" required th:errorclass="is-danger" class="input"/>
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <p th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{passwordConfirmation}" class="help is-danger"></p>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <input type="submit" value="Inscription" class="button is-primary is-fullwidth"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

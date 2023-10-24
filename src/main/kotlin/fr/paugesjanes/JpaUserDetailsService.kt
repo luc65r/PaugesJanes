@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service
 @Service
 class JpaUserDetailsService(
     @Autowired
-    private val userRepository: UserRepository,
+    val userRepository: UserRepository,
 ) : UserDetailsService {
     @Transactional
     override fun loadUserByUsername(username: String): UserDetails {

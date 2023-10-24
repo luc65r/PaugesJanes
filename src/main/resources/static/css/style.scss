@@ -1,4 +1,11 @@
 @charset "utf-8";
+
+$fa-font-path: "/webjars/fortawesome__fontawesome-free/webfonts";
+@import "scss/fontawesome.scss";
+@import "scss/brands.scss";
+@import "scss/solid.scss";
+@import "scss/regular.scss";
+
 @import "bulma.sass";
 
 .yellow-button {

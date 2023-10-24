@@ -19,7 +19,7 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start is-size-4">
-                <a class="navbar-item" th:href="@{/}">
+                <a class="navbar-item ">
                     Accueil
                 </a>
 
@@ -31,7 +31,7 @@
                     Favoris
                 </a>
 
-                <a class="navbar-item"- th:href="@{search}">
+                <a class="navbar-item">
                     <!--/* Logo loupe /*/-->
                     Rechercher
                 </a>
@@ -40,11 +40,11 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button yellow-button">
+                        <a class="button yellow-button" th:href="@{/register}">
                             <strong>Inscription</strong>
                         </a>
-                        <a class="button is-light" href="/login">
-                            Connection
+                        <a class="button is-light" th:href="@{/login}">
+                            Connexion
                         </a>
                     </div>
                 </div>

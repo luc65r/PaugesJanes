@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Déconexion</title>
+</head>
+<body>
+<section class="hero is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="box column is-4 is-offset-4">
+                <h1 class="title">Déconnexion</h1>
+                <form th:action="@{/logout}" method="post">
+                    <div class="field">
+                        <div class="control">
+                            <input type="submit" value="Déconnexion" class="button is-primary"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
