@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pauges Janes</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+
+    </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<main class="section" >
+
+    <!--/* <h1>test</h1>
+     <span th:text="${a}"></span>
+     <button class="button is-danger is-rounded is-large">ATNNTETNENTNETIOONNN</button>
+     /*/-->
+    <div>
+        <div class="container has-text-centered">
+
+            <div class="field has-addons">
+                <div class="control is-expanded">
+                    <input class="input" type="text" placeholder="Rechercher ">
+                </div>
+                <div class="control">
+                    <button class="button yellow-button">
+                        Search
+                    </button>
+                </div>
+            </div>
+
+            <div class="columns">
+                <div th:replace="fragments/myFragment :: myFragment" th:with="user='user'"></div>
+                <div class="column">
+                    <div class="box is-rounded">
+                        <div class="columns">
+                            <div class="column is-one-fifth">
+                                <figure class="image is-64x64">
+                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                                </figure>
+                            </div>
+                            <div class="column">
+                                <div class="name">
+                                    <h2>
+                                        pROUT
+                                    </h2>
+                                </div>
+                                <div class="description">
+                                    <span>balblallblababllballblballalb</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <iframe
+                                    width="400"
+                                    height="150"
+                                    src="https://palmes.dev/"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="column">
+                    <div class="box is-rounded">
+                        <div class="columns">
+                            <div class="column is-one-fifth">
+                                <figure class="image is-64x64">
+                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                                </figure>
+                            </div>
+                            <div class="column">
+                                <div class="name">
+                                    <h2>
+                                        pROUT
+                                    </h2>
+                                </div>
+                                <div class="description">
+                                    <span>balblallblababllballblballalb</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <iframe
+                                    width="400"
+                                    height="150"
+                                    src="https://palmes.dev/"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="column">
+                    <div class="box is-rounded">
+                        <div class="columns">
+                            <div class="column is-one-fifth">
+                                <figure class="image is-64x64">
+                                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                                </figure>
+                            </div>
+                            <div class="column">
+                                <div class="name">
+                                    <h2>
+                                        pROUT
+                                    </h2>
+                                </div>
+                                <div class="description">
+                                    <span>balblallblababllballblballalb</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <iframe
+                                    width="400"
+                                    height="150"
+                                    src="https://palmes.dev/"></iframe>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
