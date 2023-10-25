@@ -15,4 +15,7 @@ class MainController {
     @GetMapping("/contact")
     fun contact(): String = "main/contact"
 
+    @GetMapping("/search")
+    fun search(): String = "main/search"
+
 }
