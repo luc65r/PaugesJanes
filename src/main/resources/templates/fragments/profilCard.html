@@ -6,7 +6,7 @@
 
 
 
-<div th:fragment="profilCard(user)">
+<div>
     <div class="column">
         <div class="box is-rounded">
             <div class="columns">
@@ -16,13 +16,11 @@
                     </figure>
                 </div>
                 <div class="column">
-                    <div class="name">
-                        <h2 th:text="${user.name}">
-                            User name
-                        </h2>
+                    <div class="name yellow-button">
+                        <h2>Nom élève</h2>
                     </div>
-                    <div class="description">
-                        <span th:text="@{user.description}">balblallblababllballblballalb</span>
+                    <div class="description ">
+                        <span>Description élève / projet</span>
                     </div>
                 </div>
             </div>
@@ -33,7 +31,7 @@
 
                         src="https://palmes.dev/"></iframe>
 
-                <span class="icon has-text-love">
+                <span class="icon has-text-danger">
                   <i class="fas fa-heart"></i>
                 </span>
 
