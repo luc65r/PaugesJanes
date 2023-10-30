@@ -9,6 +9,10 @@ interface UserRepository : JpaRepository<User, UUID> {
     fun existsByUsername(username: String): Boolean
 
     fun existsByEmail(email: String): Boolean
+
+    fun findByUsernameContaining(search: String): List<User>
+    fun findByPortfolioContaining(search: String): List<User>
+
 }
 
 interface RoleRepository : JpaRepository<Role, String>
