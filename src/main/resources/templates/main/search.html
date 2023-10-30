@@ -27,7 +27,13 @@
 
             <div class="field has-addons">
                 <div class="control is-expanded">
-                    <input class="input" type="text" placeholder="Rechercher ">
+                    <input class="input"
+                           type="search"
+                           name="search"
+                           placeholder="Rechercher "
+                           hx-post="/search"
+                           hx-trigger="keyup changed delay:500ms, search"
+                    >
                 </div>
                 <div class="control">
                     <button class="button yellow-button">
