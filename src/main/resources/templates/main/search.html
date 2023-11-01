@@ -39,9 +39,9 @@
             </div>
 
            <div>
-               <div class="columns" id="search-results">
+               <div class="columns is-multiline" id="search-results">
 
-                   <div class="column" th:each="user : ${users}">
+                   <div class="column is-4" th:each="user : ${users}">
                        <div class="box is-rounded">
                            <div class="columns">
                                <div class="column is-one-fifth">
@@ -81,8 +81,7 @@
                    <div th:replace="fragments/profilCard :: div"></div>
 
 
-               </div>
-               <div class="columns">
+
 
 
                    <div th:replace="fragments/profilCard :: div"></div>
@@ -90,8 +89,6 @@
                    <div th:replace="fragments/profilCard :: div"></div>
 
 
-               </div>
-               <div class="columns">
 
 
                    <div th:replace="fragments/profilCard :: div"></div>
