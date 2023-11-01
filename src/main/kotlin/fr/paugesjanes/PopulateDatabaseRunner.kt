@@ -1,11 +1,14 @@
 package fr.paugesjanes
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.CommandLineRunner
+import org.springframework.boot.ApplicationArguments
+import org.springframework.boot.ApplicationRunner
+import org.springframework.boot.sql.init.dependency.DependsOnDatabaseInitialization
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
 
 @Component
+@DependsOnDatabaseInitialization
 class PopulateDatabaseRunner(
     @Autowired
     val userRepository: UserRepository,
@@ -15,8 +18,8 @@ class PopulateDatabaseRunner(
 
     @Autowired
     val passwordEncoder: PasswordEncoder,
-) : CommandLineRunner {
-    override fun run(vararg args: String?) {
+) : ApplicationRunner {
+    override fun run(args: ApplicationArguments) {
         if (!roleRepository.existsById("ADMIN"))
             roleRepository.save(Role("ADMIN"))
 
