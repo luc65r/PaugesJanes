@@ -2,3 +2,7 @@ spring:
   datasource.url: jdbc:h2:file:./data/dev
   h2.console.enabled: true
   jpa.hibernate.ddl-auto: update
+
+  thymeleaf:
+    prefix: file:src/main/resources/templates/
+    cache: false
