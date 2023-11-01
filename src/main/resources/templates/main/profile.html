@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pauges Janes</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+
+    </style>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<main class="section is-fullheight-with-navbar" >
+
+    <!--/* <h1>test</h1>
+     <span th:text="${a}"></span>
+     <button class="button is-danger is-rounded is-large">ATNNTETNENTNETIOONNN</button>
+     /*/-->
+    <div class="container">
+        <div class="section is-halfheight has-background-black">
+           <div class="box columns">
+               <div class="image is-64x64 has-background-danger column is-1">
+                   <img src="" class="is-rounded ">
+               </div>
+
+               <div class="column">
+                   <h1 class="title">NAME</h1>
+                   <div class="">
+                       <span>DESCRIPTION</span>
+                   </div>
+               </div>
+
+               <button class="button yellow-button column is-2">Modifier le profil</button>
+           </div>
+
+
+        </div>
+        <div class="section is-halfheight has-background-danger"><h1>Projetsx   </h1></div>
+    </div>
+</main>
+
+</body>
+</html>
