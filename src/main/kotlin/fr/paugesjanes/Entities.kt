@@ -43,8 +43,15 @@ class Project(
     @Id
     @Column(nullable = false)
     val id: UUID = UUID.randomUUID(),
+
+    @Column(nullable = false)
+    var title: String,
+
+    @Column(nullable = false)
+    var link: String,
 ) {
-    var link: String? = null
+    @Lob
+    var description: String? = null
 
     @ManyToMany(mappedBy = "projects")
     var authors: MutableSet<User> = mutableSetOf()
