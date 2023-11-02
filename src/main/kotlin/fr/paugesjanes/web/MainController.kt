@@ -37,11 +37,9 @@ class MainController {
     @PostMapping("/search")
     @ResponseBody
     fun searchProfile(@RequestParam("search") search: String): List<User> {
-        // Modify your repository method to search by username, portfolio, or project
         val usersByUsername = userRepository.findByUsernameContaining(search)
         val usersByPortfolio = userRepository.findByPortfolioContaining(search)
 
-        // Combine the results and remove duplicates if necessary
         val searchResults = usersByUsername + usersByPortfolio
         return searchResults.distinct()
     }
