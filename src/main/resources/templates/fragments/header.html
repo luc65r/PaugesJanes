@@ -3,69 +3,72 @@
 <head>
 </head>
 <body>
-<header class="section">
-    <nav class="navbar c" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-                <img alt="logo" src="https://www.pagesjaunes.fr/assets/images/logo_pagesjaunes-b41e5acdca.svg" width="112" height="28">
-            </a>
-
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start is-size-4">
-                <a class="navbar-item " th:href="@{/}">
-                    Accueil
+<header class="section hero-head">
+    <div class="container">
+        <nav class="navbar c" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                    <img alt="logo" src="https://www.pagesjaunes.fr/assets/images/logo_pagesjaunes-b41e5acdca.svg" width="112" height="28">
                 </a>
 
-                <a class="navbar-item" th:href="@{profile}">
-                    Profil
-                </a>
-
-                <a class="navbar-item">
-                    Favoris
-                </a>
-
-                <a class="navbar-item" th:href="@{search}">
-                    <!--/* Logo loupe /*/-->
-                    Rechercher
-                </a>
-
-                <a class="navbar-item" th:href="@{contact}">
-                    <!--/* Logo loupe /*/-->
-                    Contact
-                </a>
-
-                <a class="navbar-item" th:href="@{a_propos}">
-                    <!--/* Logo loupe /*/-->
-                    A propos
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </a>
             </div>
 
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div th:switch="${#authorization.expression('isAuthenticated()')}">
-                        <div th:case="${true}" class="buttons">
-                            <a class="button is-light" th:href="@{/logout}">
-                                Déconnexion
-                            </a>
-                        </div>
-                        <div th:case="${false}" class="buttons">
-                            <a class="button yellow-button" th:href="@{/register}">
-                                <strong>Inscription</strong>
-                            </a>
-                            <a class="button is-light" th:href="@{/login}">
-                                Connexion
-                            </a>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start is-size-4">
+                    <a class="navbar-item " th:href="@{/}">
+                        Accueil
+                    </a>
+
+                    <a class="navbar-item" th:href="@{profile}">
+                        Profil
+                    </a>
+
+                    <a class="navbar-item">
+                        Favoris
+                    </a>
+
+                    <a class="navbar-item" th:href="@{search}">
+                        <!--/* Logo loupe /*/-->
+                        Rechercher
+                    </a>
+
+                    <a class="navbar-item" th:href="@{contact}">
+                        <!--/* Logo loupe /*/-->
+                        Contact
+                    </a>
+
+                    <a class="navbar-item" th:href="@{a_propos}">
+                        <!--/* Logo loupe /*/-->
+                        A propos
+                    </a>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div th:switch="${#authorization.expression('isAuthenticated()')}">
+                            <div th:case="${true}" class="buttons">
+                                <a class="button is-light" th:href="@{/logout}">
+                                    Déconnexion
+                                </a>
+                            </div>
+                            <div th:case="${false}" class="buttons">
+                                <a class="button yellow-button" th:href="@{/register}">
+                                    <strong>Inscription</strong>
+                                </a>
+                                <a class="button is-light" th:href="@{/login}">
+                                    Connexion
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+
+    </div>
 </header>
