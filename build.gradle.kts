@@ -48,6 +48,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6")
+	implementation("org.modelmapper:modelmapper:3.2.0")
 	implementation("org.webjars:webjars-locator-core")
 	implementation("org.webjars.npm:bulma:0.9.4")
 	implementation("org.webjars.npm:fortawesome__fontawesome-free:5.15.4")
