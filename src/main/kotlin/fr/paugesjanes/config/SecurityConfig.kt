@@ -15,6 +15,10 @@ class SecurityConfig {
     @Bean
     fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http {
+            csrf {
+                /* TODO: Fix POST, PUT and DELETE requests and remove this */
+                disable()
+            }
             authorizeRequests {
                 authorize(anyRequest, permitAll)
                 //authorize("/user", authenticated)
