@@ -5,19 +5,19 @@ import java.util.*
 
 @Entity
 class Project(
-    @Id
-    @Column(nullable = false)
-    val id: UUID = UUID.randomUUID(),
-
     @Column(nullable = false)
     var title: String,
 
     @Column(nullable = false)
     var link: String,
-) {
-    @Lob
-    var description: String? = null
 
+    @Lob
+    var description: String? = null,
+
+    @Id
+    @Column(nullable = false)
+    val id: UUID = UUID.randomUUID(),
+) {
     @ManyToMany(mappedBy = "projects")
     var authors: MutableSet<User> = mutableSetOf()
 

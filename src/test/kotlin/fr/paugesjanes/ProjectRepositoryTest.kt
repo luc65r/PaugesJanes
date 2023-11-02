@@ -28,7 +28,7 @@ class ProjectRepositoryTest(
         private val id = UUID.randomUUID()
 
         init {
-            projectRepository.save(Project(id, title = "", link = ""))
+            projectRepository.save(Project(title = "", link = "", id = id))
         }
 
         @Test
