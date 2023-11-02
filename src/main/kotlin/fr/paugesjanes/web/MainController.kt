@@ -1,9 +1,8 @@
 package fr.paugesjanes.web
 
-import fr.paugesjanes.User
-import fr.paugesjanes.UserRepository
+import fr.paugesjanes.entities.User
+import fr.paugesjanes.repositories.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.core.annotation.MergedAnnotations.Search
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping

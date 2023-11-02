@@ -1,6 +1,6 @@
 package fr.paugesjanes.constraints
 
-import fr.paugesjanes.UserRepository
+import fr.paugesjanes.repositories.UserRepository
 import jakarta.validation.Constraint
 import jakarta.validation.ConstraintValidator
 import jakarta.validation.ConstraintValidatorContext

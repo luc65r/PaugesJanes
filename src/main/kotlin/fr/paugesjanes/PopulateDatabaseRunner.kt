@@ -1,5 +1,9 @@
 package fr.paugesjanes
 
+import fr.paugesjanes.entities.Role
+import fr.paugesjanes.entities.User
+import fr.paugesjanes.repositories.RoleRepository
+import fr.paugesjanes.repositories.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.ApplicationArguments
 import org.springframework.boot.ApplicationRunner

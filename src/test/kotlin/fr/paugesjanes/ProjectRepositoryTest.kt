@@ -1,13 +1,15 @@
 package fr.paugesjanes
 
-import org.junit.jupiter.api.Assertions.*
+import fr.paugesjanes.entities.Project
+import fr.paugesjanes.repositories.ProjectRepository
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import java.util.UUID
+import java.util.*
 
 @DataJpaTest
 @AutoConfigureTestDatabase
@@ -17,7 +19,7 @@ class ProjectRepositoryTest(
 ) {
     @Test
     fun `insert project`() {
-        projectRepository.save(Project())
+        projectRepository.save(Project(title = "", link = ""))
     }
 
     @Nested
@@ -26,7 +28,7 @@ class ProjectRepositoryTest(
         private val id = UUID.randomUUID()
 
         init {
-            projectRepository.save(Project(id))
+            projectRepository.save(Project(id, title = "", link = ""))
         }
 
         @Test

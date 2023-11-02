@@ -1,7 +1,7 @@
 package fr.paugesjanes.web
 
-import fr.paugesjanes.User
-import fr.paugesjanes.UserRepository
+import fr.paugesjanes.entities.User
+import fr.paugesjanes.repositories.UserRepository
 import fr.paugesjanes.constraints.EmailFree
 import fr.paugesjanes.constraints.EnableFieldMatchConstraint
 import fr.paugesjanes.constraints.FieldMatch
