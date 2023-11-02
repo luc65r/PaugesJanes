@@ -5,7 +5,7 @@
     <title>Contact</title>
 </head>
 <body>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="~{fragments/header :: header}"></div>
     <div class="box column is-6 is-offset-3">
         <!-- Champs Nom/Prenom -->
         <div class="field">
@@ -65,6 +65,6 @@
             </div>
         </div>
     </div>
-    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
