@@ -3,6 +3,7 @@ package fr.paugesjanes.web
 import fr.paugesjanes.entities.Project
 import fr.paugesjanes.repositories.ProjectRepository
 import fr.paugesjanes.repositories.UserRepository
+import fr.paugesjanes.services.MarkdownService
 import io.github.wimdeblauwe.htmx.spring.boot.mvc.HtmxResponse
 import io.github.wimdeblauwe.htmx.spring.boot.mvc.HxRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -34,6 +35,9 @@ class ProjectController(
 
     @Autowired
     val userRepository: UserRepository,
+
+    @Autowired
+    val markdownService: MarkdownService,
 ) {
     data class ProjectInfo(
         @field:NotNull
@@ -89,6 +93,9 @@ class ProjectController(
         model: Model,
     ): String {
         model["project"] = project
+        project.description?.let {
+            model["renderedDescription"] = markdownService.markdownToHtml(it)
+        }
         return "project/project"
     }
 
@@ -127,6 +134,9 @@ class ProjectController(
             link = projectInfo.link!!
             description = projectInfo.description
         })
+        project.description?.let {
+            model["renderedDescription"] = markdownService.markdownToHtml(it)
+        }
         return "fragments/project :: show"
     }
 
