@@ -41,6 +41,9 @@
                 <div class="navbar-item">
                     <div th:switch="${#authorization.expression('isAuthenticated()')}">
                         <div th:case="${true}" class="buttons">
+                            <a class="button yellow-button" th:href="@{/project/create}">
+                                Nouveau projet
+                            </a>
                             <a class="button is-light" th:href="@{/logout}">
                                 Déconnexion
                             </a>
