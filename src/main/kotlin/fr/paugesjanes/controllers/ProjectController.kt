@@ -1,4 +1,4 @@
-package fr.paugesjanes.web
+package fr.paugesjanes.controllers
 
 import fr.paugesjanes.entities.Project
 import fr.paugesjanes.repositories.ProjectRepository
