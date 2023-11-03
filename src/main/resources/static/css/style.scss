@@ -12,7 +12,6 @@ $footer-color: #ffffff;
 $footer-padding: 40px;
 
 /* a_propos */
-$content-heading-color: white;
 
 @import "bulma.sass";
 
@@ -21,12 +20,3 @@ $content-heading-color: white;
   color: #000; /* Set the text color for contrast */
 }
 
-.has-background {
-  background-image: url("/img/fond_a_propos.jpeg");
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.has-text-white {
-  color: white;
-}
