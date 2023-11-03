@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="show" hx-target="this" hx-swap="outerHTML">
+    <h1 th:text="${project.title}" class="title"></h1>
+    <a th:href="${project.link}" th:text="${project.link}"></a>
+    <p th:text="${project.description}"></p>
+    <button th:hx-get="@{/project/{id}/edit(id=${project.id})}" class="button">
+        Éditer
+    </button>
+</div>
+<div th:fragment="fields">
+    <div class="field">
+        <label class="label">Titre</label>
+        <div class="control">
+            <input th:field="*{title}" th:value="*{title}" required th:errorclass="is-danger" class="input"/>
+        </div>
+        <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="help is-danger"></p>
+    </div>
+    <div class="field">
+        <label class="label">Lien</label>
+        <div class="control">
+            <input type="url" th:field="*{link}" th:value="*{link}" required th:errorclass="is-danger" class="input"/>
+        </div>
+        <p th:if="${#fields.hasErrors('link')}" th:errors="*{link}" class="help is-danger"></p>
+    </div>
+    <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+            <textarea th:field="*{description}" th:value="*{description}" th:errorclass="is-danger" class="textarea"/>
+        </div>
+        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="help is-danger"></p>
+    </div>
+</div>
+<div th:fragment="create">
+    <div th:each="error : ${#fields.errors('*')}" th:text="${error}" class="notification is-danger"></div>
+    <form th:hx-post="@{/project/create}" th:object="${projectInfo}" hx-target="this" hx-swap="outerHTML">
+        <div th:replace="~{:: fields}"></div>
+        <div class="field">
+            <div class="control">
+                <button class="button is-primary">Créer</button>
+                <a class="button" th:href="@{/}">Annuler</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:fragment="edit">
+    <div th:each="error : ${#fields.errors('*')}" th:text="${error}" class="notification is-danger"></div>
+    <form th:hx-put="@{/project/{id}(id=${project.id})}" th:object="${projectInfo}" hx-target="this" hx-swap="outerHTML">
+        <div th:replace="~{:: fields}"></div>
+        <div class="field">
+            <div class="control">
+                <button class="button is-primary">Éditer</button>
+                <a class="button" th:href="@{/project/{id}(id=${project.id})}">Annuler</a>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

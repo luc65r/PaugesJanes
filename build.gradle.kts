@@ -53,6 +53,7 @@ dependencies {
 	implementation("org.webjars.npm:bulma:0.9.4")
 	implementation("org.webjars.npm:fortawesome__fontawesome-free:5.15.4")
 	implementation("org.webjars.npm:htmx.org:1.9.6")
+	implementation("io.github.wimdeblauwe:htmx-spring-boot:3.1.1")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("com.h2database:h2")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
