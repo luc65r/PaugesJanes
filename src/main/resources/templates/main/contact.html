@@ -1,70 +1,94 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>Contact</title>
 </head>
 <body>
     <div th:replace="fragments/header :: header"></div>
-    <div class="box column is-6 is-offset-3">
-        <!-- Champs Nom/Prenom -->
-        <div class="field">
-            <label class="label">Nom / Prenom</label>
-            <div class="control has-icons-left has-icons-right">
-                <input class="input is-success" type="text" placeholder="Comment vous appelez vous ?">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                </span>
-                <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                </span>
-            </div>
-        </div>
+    <section class="section">
+        <div class="box column is-6 is-offset-3">
 
-        <!-- Champs Email -->
-        <div class="field">
-            <label class="label">Email</label>
-            <div class="control has-icons-left has-icons-right">
-                <input class="input is-danger" type="email" placeholder="Inserez votre email">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
-                </span>
-                <span class="icon is-small is-right">
-                    <i class="fas fa-exclamation-triangle"></i>
-                </span>
-            </div>
-        </div>
+            <!-- Formulaire -->
+            <form id="myForm" action="mailto:admin@pauges-janes.fr" enctype="text/plain" method="POST">
 
-        <!-- Champs Sujet -->
-        <div class="field">
-            <label class="label">Sujet</label>
-            <div class="control">
-                <div class="select">
-                    <select>
-                        <option>De quoi souhaitez vous nous parler ?</option>
-                        <option>Compte utilisateur</option>
-                        <option>Partenariats</option>
-                        <option>Signaler un bug</option>
-                        <option>Autres</option>
-                    </select>
+                <!-- Champs Nom/Prenom -->
+                <div class="field">
+                    <label class="label">Nom / Prenom</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="nomPrenom" class="input" type="text" placeholder="Comment vous appelez vous ?">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Message -->
-        <div class="field">
-            <label class="label">Message</label>
-            <div class="control">
-                <textarea class="textarea" placeholder="C'est à quel sujet ?"></textarea>
-            </div>
-        </div>
+                <!-- Champs Email -->
+                <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input id="email" class="input" type="email" placeholder="Inserez votre email">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                    </div>
+                </div>
 
-        <div class="field is-grouped">
-            <div class="control">
-                <button class="button is-link">Envoyer</button>
-            </div>
+                <!-- Champs Sujet -->
+                <div class="field">
+                    <label class="label">Sujet</label>
+                    <div class="control">
+                        <div class="select">
+                            <select id="sujet" name="sujet">
+                                <option>De quoi souhaitez vous nous parler ?</option>
+                                <option>Compte utilisateur</option>
+                                <option>Partenariats</option>
+                                <option>Signaler un bug</option>
+                                <option>Autres</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message -->
+                <div class="field">
+                    <label class="label">Message</label>
+                    <div class="control">
+                        <textarea id="message" class="textarea" placeholder="C'est à quel sujet ?"></textarea>
+                    </div>
+                </div>
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <input type="submit" class="button is-link" value="Envoyer">
+                    </div>
+                </div>
+            </form>
+
         </div>
-    </div>
+    </section>
     <div th:replace="fragments/footer :: footer"></div>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function (event) {
+            var nomPrenom = document.getElementById('nomPrenom').value;
+            var sujet = document.getElementById('sujet').value;
+            var message = document.getElementById('message').value;
+
+            var destinataire = "admin@pauges-janes.fr";
+
+            if (nomPrenom.trim() === '' || sujet === 'De quoi souhaitez vous nous parler ?' || message.trim() === '') {
+                event.preventDefault();
+                alert('Veuillez remplir tous les champs obligatoires. Merci.');
+            } else {
+                var objet = encodeURIComponent(sujet);
+                var contenu = encodeURIComponent("Nom et Prenom du client : " + nomPrenom + "\n\nMessage : " + message);
+                var lienMailto = "mailto:" + destinataire + "?subject=" + objet + "&body=" + contenu;
+
+                window.location.href = lienMailto;
+            }
+        });
+    </script>
+
 </body>
 </html>
