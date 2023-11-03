@@ -5,7 +5,7 @@
     <title>Contact</title>
 </head>
 <body>
-    <div th:replace="fragments/header :: header"></div>
+    <div th:replace="~{fragments/header :: header}"></div>
     <section class="section">
         <div class="box column is-6 is-offset-3">
 
@@ -67,7 +67,7 @@
 
         </div>
     </section>
-    <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="~{fragments/footer :: footer}"></div>
 
     <script>
         document.getElementById('myForm').addEventListener('submit', function (event) {

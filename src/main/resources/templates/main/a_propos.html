@@ -5,7 +5,7 @@
         <title>A propos</title>
     </head>
     <body>
-        <div th:replace="fragments/header :: header"></div>
+        <div th:replace="~{fragments/header :: header}"></div>
             <section class="hero is-medium">
                 <div class="hero-body">
                     <div class="content is-large">
@@ -24,6 +24,6 @@
                     </div>
                 </div>
             </section>
-        <div th:replace="fragments/footer :: footer"></div>
+        <div th:replace="~{fragments/footer :: footer}"></div>
     </body>
 </html>
