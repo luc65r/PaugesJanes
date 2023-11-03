@@ -6,24 +6,24 @@
     </head>
     <body>
         <div th:replace="fragments/header :: header"></div>
-        <div class="has-background">
-            <section class="hero is-large">
+            <section class="hero is-medium">
                 <div class="hero-body">
                     <div class="content is-large">
-                        <h1 class="has-text-white">A propos</h1>
-                        <p class="has-text-white">
-                            Pauges Janes est un projet de développement distribué JEE,
-                            lancé en 2023 par des étudiants de l'école d'ingénieurs CY Tech Pau
-                            (anciennement EISTI). Son objectif principal est de permettre
-                            aux étudiants de partager leurs projets académiques, professionnels
-                            et personnels à travers de portfolios qu'ils peuvent rendre accessibles
-                            sur notre site web.
-                        </p>
-                        <p class="has-text-white">Créateurs : ARRESSEGUET Yan - BRENOT Gabriel - LIOGER BUN Jérémi - RANSAN Lucas </p>
+                        <div class="container is-max-widescreen">
+                            <h1>A propos</h1>
+                            <p>
+                                Pauges Janes est un projet de développement distribué JEE,
+                                lancé en 2023 par des étudiants de l'école d'ingénieurs CY Tech Pau
+                                (anciennement EISTI). Son objectif principal est de permettre
+                                aux étudiants de partager leurs projets académiques, professionnels
+                                et personnels à travers des portfolios et des projets qu'ils peuvent rendre accessibles
+                                sur notre site web.
+                            </p>
+                            <p>Créateurs : ARRESSEGUET Yan - BRENOT Gabriel - LIOGER BUN Jérémi - RANSAN Lucas </p>
+                        </div>
                     </div>
                 </div>
             </section>
-        </div>
         <div th:replace="fragments/footer :: footer"></div>
     </body>
 </html>
