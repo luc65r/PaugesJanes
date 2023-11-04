@@ -6,13 +6,8 @@ $fa-font-path: "/webjars/fortawesome__fontawesome-free/webfonts";
 @import "scss/solid.scss";
 @import "scss/regular.scss";
 
-
-/* footer */
-$footer-background-color: #6e6e6e;
-$footer-color: #ffffff;
-$footer-padding: 40px;
-
 /* a_propos */
+
 
 @import "bulma.sass";
 
@@ -24,4 +19,8 @@ $footer-padding: 40px;
 /* navbar */
 .my-navbar-padding {
   padding: 20px;
+}
+
+body{
+  background-image: url('../img/fond.jpg');
 }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head th:fragment="~{fragments/base :: head}"></head>
+<head th:replace="~{fragments/base :: head}"></head>
 <body>
     <!-- inclusion navbar -->
     <div th:replace="~{fragments/base :: header}"></div>
     <!-- gestion de la hauteur -->
-    <section class="section">
+    <section class="section is-full">
         <div class="box column is-6 is-offset-3">
             <!-- Formulaire -->
             <form id="myForm" action="mailto:admin@pauges-janes.fr" enctype="text/plain" method="POST">
