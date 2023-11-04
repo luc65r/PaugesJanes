@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:fragment="~{fragments/base :: head}"></head>
 <body>
+    <!-- inclusion navbar -->
     <div th:replace="~{fragments/base :: header}"></div>
+    <!-- gestion de la hauteur -->
     <section class="section">
         <div class="box column is-6 is-offset-3">
-
             <!-- Formulaire -->
             <form id="myForm" action="mailto:admin@pauges-janes.fr" enctype="text/plain" method="POST">
 
@@ -47,7 +48,7 @@
                     </div>
                 </div>
 
-                <!-- Message -->
+                <!-- Champs Message -->
                 <div class="field">
                     <label class="label">Message</label>
                     <div class="control">
@@ -55,6 +56,7 @@
                     </div>
                 </div>
 
+                <!-- Bouton submit -->
                 <div class="field is-grouped">
                     <div class="control">
                         <input type="submit" class="button is-link" value="Envoyer">
@@ -68,16 +70,19 @@
 
     <script>
         document.getElementById('myForm').addEventListener('submit', function (event) {
+            // déclaration des variables qui sont récupérées du form
             var nomPrenom = document.getElementById('nomPrenom').value;
             var sujet = document.getElementById('sujet').value;
             var message = document.getElementById('message').value;
-
+            // Adresse mail de base du destinataire (nous)
             var destinataire = "admin@pauges-janes.fr";
-
+            // vérification que les champs sont tous rempli
             if (nomPrenom.trim() === '' || sujet === 'De quoi souhaitez vous nous parler ?' || message.trim() === '') {
                 event.preventDefault();
+                // message pour dire de bien compléter le form
                 alert('Veuillez remplir tous les champs obligatoires. Merci.');
             } else {
+                // préparation du lien mailto
                 var objet = encodeURIComponent(sujet);
                 var contenu = encodeURIComponent("Nom et Prenom du client : " + nomPrenom + "\n\nMessage : " + message);
                 var lienMailto = "mailto:" + destinataire + "?subject=" + objet + "&body=" + contenu;

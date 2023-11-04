@@ -2,25 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{fragments/base :: head}"></head>
     <body>
-        <div th:replace="~{fragments/base :: header}"></div>
-            <section class="hero is-medium">
-                <div class="hero-body">
-                    <div class="content is-large">
-                        <div class="container is-max-widescreen">
-                            <h1>A propos</h1>
-                            <p>
-                                Pauges Janes est un projet de développement distribué JEE,
-                                lancé en 2023 par des étudiants de l'école d'ingénieurs CY Tech Pau
-                                (anciennement EISTI). Son objectif principal est de permettre
-                                aux étudiants de partager leurs projets académiques, professionnels
-                                et personnels à travers des portfolios et des projets qu'ils peuvent rendre accessibles
-                                sur notre site web.
-                            </p>
-                            <p>Créateurs : ARRESSEGUET Yan - BRENOT Gabriel - LIOGER BUN Jérémi - RANSAN Lucas </p>
-                        </div>
+        <!-- inclusion navbar -->
+        <div th:replace="~{fragments/header :: header}"></div>
+        <section class="hero is-medium">
+            <div class="hero-body">
+                <!-- on gère la hauteur -->
+                <div class="content is-large">
+                    <!-- on gère la largeur -->
+                    <div class="container is-max-widescreen">
+                        <!-- Texte affiché sur la page -->
+                        <h1>A propos</h1>
+                        <p>
+                            Pauges Janes est un projet de développement distribué JEE,
+                            lancé en 2023 par des étudiants de l'école d'ingénieurs CY Tech Pau
+                            (anciennement EISTI). Son objectif principal est de permettre
+                            aux étudiants de partager leurs projets académiques, professionnels
+                            et personnels à travers des portfolios et des projets qu'ils peuvent rendre accessibles
+                            sur notre site web.
+                        </p>
+                        <p>Créateurs : ARRESSEGUET Yan - BRENOT Gabriel - LIOGER BUN Jérémi - RANSAN Lucas </p>
                     </div>
                 </div>
-            </section>
-        <div th:replace="~{fragments/base :: footer}"></div>
+            </div>
+        </section>
     </body>
 </html>
