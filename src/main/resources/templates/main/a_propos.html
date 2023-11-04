@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <link rel="stylesheet" th:href="@{/css/style.css}">
-        <title>A propos</title>
-    </head>
+    <head th:replace="~{fragments/base :: head}"></head>
     <body>
-        <div th:replace="~{fragments/header :: header}"></div>
+        <div th:replace="~{fragments/base :: header}"></div>
             <section class="hero is-medium">
                 <div class="hero-body">
                     <div class="content is-large">
@@ -24,6 +21,6 @@
                     </div>
                 </div>
             </section>
-        <div th:replace="~{fragments/footer :: footer}"></div>
+        <div th:replace="~{fragments/base :: footer}"></div>
     </body>
 </html>

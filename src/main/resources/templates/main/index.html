@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Pauges Janes</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-
-</head>
+<head th:replace="~{fragments/base :: head}"></head>
 <body>
-<div th:replace="~{fragments/header :: header}"></div>
+<div th:replace="~{fragments/base :: header}"></div>
 
 <main class="section is-fullheight" >
 

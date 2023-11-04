@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <title>Erreur [[${status}]]</title>
-</head>
+<head th:replace="~{fragments/base :: head}"></head>
 <body>
 <section class="hero is-fullheight">
+    <div th:replace="~{fragments/base :: header}"></div>
     <div class="hero-body">
         <div class="container has-text-centered">
             <div class="box column is-4 is-offset-4">

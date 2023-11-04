@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
-    <title>Contact</title>
-</head>
+<head th:fragment="~{fragments/base :: head}"></head>
 <body>
-    <div th:replace="~{fragments/header :: header}"></div>
+    <div th:replace="~{fragments/base :: header}"></div>
     <section class="section">
         <div class="box column is-6 is-offset-3">
 
@@ -67,7 +64,7 @@
 
         </div>
     </section>
-    <div th:replace="~{fragments/footer :: footer}"></div>
+    <div th:replace="~{fragments/base :: footer}"></div>
 
     <script>
         document.getElementById('myForm').addEventListener('submit', function (event) {
