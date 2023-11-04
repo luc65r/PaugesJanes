@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
-class MainController {
-
+class MainController(
     @Autowired
-    private lateinit var userRepository: UserRepository
-
+    var userRepository: UserRepository
+) {
     @GetMapping("/")
     fun index(model: Model): String = "main/index"
 
@@ -43,6 +42,4 @@ class MainController {
         val searchResults = usersByUsername + usersByPortfolio
         return searchResults.distinct()
     }
-
-
 }
