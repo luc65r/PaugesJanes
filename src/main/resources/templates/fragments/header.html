@@ -3,54 +3,72 @@
 <head>
 </head>
 <body>
-<header class="section">
-    <nav class="navbar c" role="navigation" aria-label="main navigation">
+<header>
+
+    <!-- Barre de navigation -->
+    <nav class="navbar is-black my-navbar-padding" role="navigation" aria-label="main navigation">
+
+        <!-- Zone du logo et du menu "hamburger" pour les petits écrans -->
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
+
+            <!-- Lien vers la page d'accueil avec un logo -->
+            <a class="navbar-item" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
                 <img alt="logo" src="https://www.pagesjaunes.fr/assets/images/logo_pagesjaunes-b41e5acdca.svg" width="112" height="28">
             </a>
 
+            <!-- Menu "hamburger" pour les petits écrans -->
             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
+
         </div>
 
+        <!-- Menu de navigation principal -->
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start is-size-4">
+
+                <!-- Liens de navigation -->
                 <a class="navbar-item " th:href="@{/}">
-                    Accueil
+                    <button class="button is-white is-outlined">Accueil</button>
                 </a>
 
                 <a class="navbar-item">
-                    Profil
+                    <button class="button is-white is-outlined">Profil</button>
                 </a>
 
-                <a class="navbar-item">
-                    Favoris
+                <a class="navbar-item is-outlined">
+                    <button class="button is-white is-outlined">Favoris</button>
                 </a>
 
                 <a class="navbar-item" th:href="@{search}">
-                    <!--/* Logo loupe /*/-->
-                    Rechercher
+                    <button class="button is-white is-outlined">Rechercher</button>
                 </a>
+
             </div>
 
+            <!-- Zone connexion/inscription -->
             <div class="navbar-end">
                 <div class="navbar-item">
-                    <div th:switch="${#authorization.expression('isAuthenticated()')}">
+                    <!-- Bloc conditionnel basé sur l'authentification de l'utilisateur -->
+                    <div th:switch="${#authorization.expression('isAuthenticated')}">
+                        <!-- Si l'utilisateur est authentifié -->
                         <div th:case="${true}" class="buttons">
+                            <!-- Bouton de déconnexion -->
                             <a class="button is-light" th:href="@{/logout}">
                                 Déconnexion
                             </a>
                         </div>
+                        <!-- Si l'utilisateur n'est pas authentifié -->
                         <div th:case="${false}" class="buttons">
+                            <!-- Bouton d'inscription -->
                             <a class="button yellow-button" th:href="@{/register}">
                                 <strong>Inscription</strong>
                             </a>
+                            <!-- Bouton de connexion -->
                             <a class="button is-light" th:href="@{/login}">
-                                Connexion
+                            Connexion
                             </a>
                         </div>
                     </div>
