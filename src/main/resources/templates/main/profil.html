@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Profil</title>
+</head>
+<body>
+    <!-- inclusion navbar -->
+    <div th:replace="fragments/header :: header"></div>
+    <table class="table is-fullwidth is-bordered">
+        <div class="columns">
+            <div class="column is-one-fifth">
+                <p class="title is-2">Mon Profil</p>
+                <p>tout les infos du profil s'affichent</p>
+                <button class="button is-warning is-active">Modifier le profil</button>
+            </div>
+            <div class="column">
+                <p class="title is-2">Mon Portfolio</p>
+                <p>Le portfolio s'affiche ici</p>
+                <p>Bouton pour choisir le projet a mettre en portfolio</p>
+                <p class="title is-2">Mes Projets</p>
+                <p>Les projets s'affiches ici</p>
+                <button class="button is-warning is-active">Ajouter un projet</button>
+                <button class="button is-warning is-active">Supprimer un projet</button>
+            </div>
+        </div>
+    </table>
+</body>
+</html>
