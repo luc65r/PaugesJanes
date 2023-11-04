@@ -24,8 +24,8 @@ class MainController(
     @GetMapping("/contact")
     fun contact(): String = "main/contact"
 
-    @GetMapping("/profile")
-    fun profile(): String = "main/profile"
+    @GetMapping("/profil")
+    fun profil(): String = "main/profil"
 
     @GetMapping("/search")
     fun search(model: Model): String {
