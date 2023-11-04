@@ -26,6 +26,9 @@ class MainController {
     @GetMapping("/contact")
     fun contact(): String = "main/contact"
 
+    @GetMapping("/profil")
+    fun profil(): String = "main/profil"
+
     @GetMapping("/search")
     fun search(model: Model): String {
         model.addAttribute("users", emptyList<User>()) // Initialize users as an empty list
