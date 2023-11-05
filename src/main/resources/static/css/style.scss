@@ -21,6 +21,9 @@ $fa-font-path: "/webjars/fortawesome__fontawesome-free/webfonts";
   padding: 20px;
 }
 
-body{
+html{
+  height: 100%;
   background-image: url('../img/fond.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
