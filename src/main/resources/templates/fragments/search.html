@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div th:fragment="users" class="columns is-multiline is-centered">
+    <div th:each="user : ${users}" class="column">
+        <div class="card" th:object="${user}">
+            <a class="card-content" th:href="@{/user/{id}(id=*{username})}">
+                <div class="content">
+                    <p class="title is-4" th:text="*{fullName}"></p>
+                    <p class="subtitle is-6" th:text="*{username}"></p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div th:fragment="projects" class="columns is-multiline is-centered">
+    <div th:each="project : ${projects}" class="column">
+        <div class="card" th:object="${project}">
+            <a class="card-content" th:href="@{/project/{id}(id=*{id})}">
+                <div class="content">
+                    <p class="title is-4" th:text="*{title}"></p>
+                </div>
+                <div class="content" th:text="*{summary}"></div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
