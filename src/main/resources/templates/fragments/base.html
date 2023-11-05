@@ -37,7 +37,7 @@
                     <button class="button is-large is-white is-outlined">Accueil</button>
                 </a>
 
-                <a class="navbar-item" th:href="@{profil}">
+                <a class="navbar-item" th:href="@{/profil}">
                     <button class="button is-large is-white is-outlined">Profil</button>
                 </a>
 
@@ -45,17 +45,29 @@
                     <button class="button is-large is-white is-outlined">Favoris</button>
                 </a>
 
-                <a class="navbar-item" th:href="@{search}">
-                    <button class="button is-large is-white is-outlined">Rechercher</button>
-                </a>
-
-                <a class="navbar-item" th:href="@{contact}">
+                <a class="navbar-item" th:href="@{/contact}">
                     <button class="button is-large is-white is-outlined">Contact</button>
                 </a>
 
-                <a class="navbar-item" th:href="@{a_propos}">
-                    <button class="button is-large is-white is-outlined">A porpos</button>
+                <a class="navbar-item" th:href="@{/a_propos}">
+                    <button class="button is-large is-white is-outlined">A propos</button>
                 </a>
+
+                <a class="navbar-item" th:href="@{/user}">
+                    <button class="button is-large is-white is-outlined">Rechercher Profil</button>
+                </a>
+
+                <a class="navbar-item" th:href="@{/project}">
+                    <button class="button is-large is-white is-outlined">Rechercher Projet</button>
+                </a>
+
+                <div class="navbar-item">
+                    <select class="button is-large is-white is-outlined">
+                        <option hidden>Rechercher</option>
+                        <option><a th:href="@{/user}">Profil</a></option>
+                        <option><a th:href="@{/project}">Projet</a></option>
+                    </select>
+                </div>
 
             </div>
 
@@ -70,18 +82,18 @@
                                 Nouveau projet
                             </a>
                             <!-- Bouton de déconnexion -->
-                            <a class="button is-light" th:href="@{/logout}">
+                            <a class="navbar-item is-large button is-light" th:href="@{/logout}">
                                 Déconnexion
                             </a>
                         </div>
                         <!-- Si l'utilisateur n'est pas authentifié -->
                         <div th:case="${false}" class="buttons">
                             <!-- Bouton d'inscription -->
-                            <a class="button yellow-button" th:href="@{/register}">
+                            <a class="navbar-item is-large button yellow-button" th:href="@{/register}">
                                 <strong>Inscription</strong>
                             </a>
                             <!-- Bouton de connexion -->
-                            <a class="button is-light" th:href="@{/login}">
+                            <a class="navbar-item is-large button is-light" th:href="@{/login}">
                             Connexion
                             </a>
                         </div>
