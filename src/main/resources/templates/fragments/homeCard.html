@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <title>Pauges Janes</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/webjars/htmx.org/dist/htmx.min.js}"></script>
+</head>
+<body>
+<div th:fragment="homeCard">
+    <div class="card">
+
+        <div class="card-header ">
+            <div class="media ">
+                <div class="media-content ">
+                    <p th:text="${project.title}" class="title is-4">Nom du projet</p>
+                    <p th:text="${project.authors}" class="subtitle is-6">Createurs</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-image">
+            <div class="box image is-16by9">
+                <iframe
+                        th:src="${project.link}"
+                        src="https://palmes.dev/"
+                        class="has-ratio"
+
+                ></iframe>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <a href="#" class="card-footer-item">Précédent</a>
+            <a th:href="${project.link}" href="#" target="_blank" class="card-footer-item">Consulter le site</a>
+            <a href="#" class="card-footer-item">Suivant</a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
