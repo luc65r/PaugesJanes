@@ -20,6 +20,9 @@ class MainController(
     @GetMapping("/contact")
     fun contact(): String = "main/contact"
 
+    @GetMapping("/favorite")
+    fun favorite(): String = "main/favorite"
+
     @GetMapping("/profil")
     fun profil(): String = "main/profil"
 }
