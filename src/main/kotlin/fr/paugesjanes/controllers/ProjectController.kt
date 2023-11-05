@@ -1,6 +1,7 @@
 package fr.paugesjanes.controllers
 
 import fr.paugesjanes.entities.Project
+import fr.paugesjanes.htmx
 import fr.paugesjanes.repositories.ProjectRepository
 import fr.paugesjanes.repositories.UserRepository
 import fr.paugesjanes.services.MarkdownService
@@ -20,12 +21,6 @@ import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import java.security.Principal
-
-inline fun htmx(buildHtmxResponse: HtmxResponse.Builder.() -> Unit): HtmxResponse {
-    val builder = HtmxResponse.Builder()
-    builder.buildHtmxResponse()
-    return builder.build()
-}
 
 @Controller
 @RequestMapping("/project")
