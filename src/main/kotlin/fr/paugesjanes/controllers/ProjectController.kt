@@ -126,7 +126,7 @@ class ProjectController(
     ): String {
         val user = userRepository.findByUsername(principal.name)!!
         if (!project.authors.contains(user))
-            throw ResponseStatusException(HttpStatus.FORBIDDEN);
+            throw ResponseStatusException(HttpStatus.FORBIDDEN)
 
         model["project"] = project
         if (bindingResult.hasErrors()) {
@@ -152,7 +152,7 @@ class ProjectController(
     ): HtmxResponse {
         val user = userRepository.findByUsername(principal.name)!!
         if (!project.authors.contains(user))
-            throw ResponseStatusException(HttpStatus.FORBIDDEN);
+            throw ResponseStatusException(HttpStatus.FORBIDDEN)
 
         for (u in project.authors) {
             u.projects.remove(project)
