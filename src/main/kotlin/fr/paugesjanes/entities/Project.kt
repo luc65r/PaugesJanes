@@ -22,4 +22,7 @@ class Project(
 
     @ManyToMany
     var tags: MutableSet<Tag> = mutableSetOf()
+
+    @ManyToMany(mappedBy = "favorite")
+    var beFavorite: MutableSet<User> = mutableSetOf()
 }

@@ -29,4 +29,7 @@ class User(
 
     @ManyToMany(fetch = FetchType.LAZY)
     var projects: MutableSet<Project> = mutableSetOf()
+
+    @ManyToMany
+    var favorite: MutableSet<Project> = mutableSetOf()
 }
