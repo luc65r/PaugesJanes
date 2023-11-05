@@ -13,13 +13,13 @@
             </a>
 
             <!-- Bouton pour ajouter le projet aux favoris -->
-            <button th:hx-put="@{/project/{id}/favorite(id=${project.id})}" class="button icon-text is-primary">
-                <span class="icon"><i class="fas fa-star"></i></span>
+            <button th:unless="${isFavorite}" th:hx-put="@{/project/{id}/favorite(id=${project.id})}" class="button icon-text is-primary">
+                <span class="icon"><i class="far fa-star"></i></span>
                 <span>Ajouter le projet aux favoris</span>
             </button>
 
             <!-- Bouton pour retirer le projet des favoris -->
-            <button th:hx-put="@{/project/{id}/unfavorite(id=${project.id})}" class="button icon-text is-dark">
+            <button th:if="${isFavorite}" th:hx-put="@{/project/{id}/unfavorite(id=${project.id})}" class="button icon-text is-dark">
                 <span class="icon"><i class="fas fa-star"></i></span>
                 <span>Retirer le projet des favoris</span>
             </button>

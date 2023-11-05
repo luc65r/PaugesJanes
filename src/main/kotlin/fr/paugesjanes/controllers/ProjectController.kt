@@ -90,12 +90,10 @@ class ProjectController(
         model: Model,
         principal: Principal?,
     ): String {
-
         if (principal != null) {
             val user = userRepository.findByUsername(principal.name)
-            if (project.authors.contains(user)) {
-                model["isAuthor"] = true
-                model["users"] = getAddableUsers(project)
+            if (user != null && project.authors.contains(user)) {
+                populateModel(model, user, project)
             }
         }
         model["project"] = project
@@ -142,8 +140,7 @@ class ProjectController(
             link = projectInfo.link!!
             summary = projectInfo.summary
         })
-        model["isAuthor"] = true
-        model["users"] = getAddableUsers(project)
+        populateModel(model, user, project)
         return "fragments/project :: show"
     }
 
@@ -186,9 +183,11 @@ class ProjectController(
     @HxRequest
     @PutMapping("/{project}/favorite")
     fun favoriteProject(
-        @PathVariable project: Project,
-        principal: Principal
-    ) {
+        @PathVariable
+        project: Project,
+        principal: Principal,
+        model: Model,
+    ): HtmxResponse {
         val user = userRepository.findByUsername(principal.name)!!
 
         // Vérifiez si le projet est déjà dans la liste des projets favoris de l'utilisateur
@@ -196,15 +195,22 @@ class ProjectController(
             // Si le projet n'est pas déjà en favori, ajoutez-le à la liste des favoris
             user.favorite.add(project)
             userRepository.save(user)
+
+            populateModel(model, user, project)
+            return htmx { view("fragments/project :: show") }
         }
+
+        return htmx {}
     }
 
     @HxRequest
     @PutMapping("/{project}/unfavorite")
     fun unfavoriteProject(
-        @PathVariable project: Project,
-        principal: Principal
-    ) {
+        @PathVariable
+        project: Project,
+        principal: Principal,
+        model: Model,
+    ): HtmxResponse {
         val user = userRepository.findByUsername(principal.name)!!
 
         // Vérifiez si le projet est dans la liste des projets favoris de l'utilisateur
@@ -212,7 +218,12 @@ class ProjectController(
             // Si le projet est dans la liste des favoris, retirez-le
             user.favorite.remove(project)
             userRepository.save(user)
+
+            populateModel(model, user, project)
+            return htmx { view("fragments/project :: show") }
         }
+
+        return htmx {}
     }
 
     @HxRequest
@@ -234,12 +245,14 @@ class ProjectController(
         project.authors.add(authorToAdd)
         userRepository.save(authorToAdd)
 
-        model["isAuthor"] = true
-        model["users"] = getAddableUsers(project)
-
+        populateModel(model, user, project)
         return htmx { view("fragments/project :: show") }
     }
 
-    private fun getAddableUsers(project: Project): List<User> =
-        userRepository.findAll() - project.authors
+
+    private fun populateModel(model: Model, user: User, project: Project) {
+        model["isAuthor"] = true
+        model["users"] = userRepository.findAll() - project.authors
+        model["isFavorite"] = user.favorite.contains(project)
+    }
 }
