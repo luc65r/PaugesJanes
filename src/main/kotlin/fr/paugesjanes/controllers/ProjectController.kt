@@ -68,15 +68,17 @@ class ProjectController(
         if (bindingResult.hasErrors())
             return htmx { view("fragments/project :: create") }
 
-        val project = projectRepository.save(
-            Project(
-                projectInfo.title!!,
-                projectInfo.link!!,
-                projectInfo.summary,
-            )
+        val project = Project(
+            projectInfo.title!!,
+            projectInfo.link!!,
+            projectInfo.summary,
         )
         val user = userRepository.findByUsername(principal.name)!!
+        user.projects.add(project)
         project.authors.add(user)
+        projectRepository.save(project)
+        userRepository.save(user)
+
         return htmx { redirect("/project/${project.id}") }
     }
 
@@ -85,7 +87,14 @@ class ProjectController(
         @PathVariable
         project: Project,
         model: Model,
+        principal: Principal?,
     ): String {
+        model["isAuthor"] = if (principal != null) {
+            val user = userRepository.findByUsername(principal.name)
+            project.authors.contains(user)
+        } else {
+            false
+        }
         model["project"] = project
         return "project/project"
     }
@@ -113,7 +122,12 @@ class ProjectController(
         projectInfo: ProjectInfo,
         bindingResult: BindingResult,
         model: Model,
+        principal: Principal,
     ): String {
+        val user = userRepository.findByUsername(principal.name)!!
+        if (!project.authors.contains(user))
+            throw ResponseStatusException(HttpStatus.FORBIDDEN);
+
         model["project"] = project
         if (bindingResult.hasErrors()) {
             model["projectInfo"] = projectInfo
@@ -128,28 +142,34 @@ class ProjectController(
         return "fragments/project :: show"
     }
 
+    @HxRequest
     @DeleteMapping("/{project}")
     fun deleteProject(
         @PathVariable
         project: Project,
         principal: Principal,
-    ): String {
+    ): HtmxResponse {
         val user = userRepository.findByUsername(principal.name)!!
         if (!project.authors.contains(user))
             throw ResponseStatusException(HttpStatus.FORBIDDEN);
 
         projectRepository.delete(project)
-        return "redirect:/project"
+        return htmx { redirect("/user/${user.username}") }
     }
 
+    @HxRequest
     @PutMapping("/{project}/quit")
     fun quitProject(
         @PathVariable
         project: Project,
         principal: Principal,
-    ): String {
+    ): HtmxResponse {
         val user = userRepository.findByUsername(principal.name)!!
         project.authors.remove(user)
-        return "redirect:/user/${user.id}"
+        if (project.authors.isEmpty())
+            projectRepository.delete(project)
+        else
+            projectRepository.save(project)
+        return htmx { redirect("/user/${user.username}") }
     }
 }
