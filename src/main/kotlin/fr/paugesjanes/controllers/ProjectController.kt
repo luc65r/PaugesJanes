@@ -177,4 +177,22 @@ class ProjectController(
             projectRepository.delete(project)
         return htmx { redirect("/user/${user.username}") }
     }
+
+    @HxRequest
+    @PutMapping("/{project}/favorite")
+    fun favoriteProject(
+        @PathVariable project: Project,
+        principal: Principal
+    ): HtmxResponse {
+        val user = userRepository.findByUsername(principal.name)!!
+
+        // Vérifiez si le projet est déjà dans la liste des projets favoris de l'utilisateur
+        if (!user.favorite.contains(project)) {
+            // Si le projet n'est pas déjà en favori, ajoutez-le à la liste des favoris
+            user.favorite.add(project)
+            userRepository.save(user)
+        }
+
+        return htmx { redirect("/user/${user.username}") }
+    }
 }
