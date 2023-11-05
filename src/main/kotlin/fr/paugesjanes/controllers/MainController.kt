@@ -1,12 +1,12 @@
 package fr.paugesjanes.controllers
 
-import fr.paugesjanes.entities.Project
 import fr.paugesjanes.repositories.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.ui.set
 import org.springframework.web.bind.annotation.GetMapping
+import java.security.Principal
 
 @Controller
 class MainController(
@@ -23,8 +23,12 @@ class MainController(
     fun contact(): String = "main/contact"
 
     @GetMapping("/favorite")
-    fun favorite(model: Model): String {
-        model["projects"] = listOf<Project>()
+    fun favorite(
+        model: Model,
+        principal: Principal,
+    ): String {
+        val user = userRepository.findByUsername(principal.name)!!
+        model["projects"] = user.favorite
         return "main/favorite"
     }
 
