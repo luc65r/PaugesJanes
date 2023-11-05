@@ -11,33 +11,33 @@
             <a class="subtitle has-text-white column" th:text="${user.email}"></a>
         </div>
         <div class="column p-6 is-vcentered">
-            <h1 class="title has-text-grey">Mon portfolio</h1>
+            <h1 class="title has-text-grey">Portfolio</h1>
             <div class="button is-medium is-white is-outlined navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
                     Choisir mon portfolio
                 </a>
                 <div  class="navbar-dropdown">
-                    <a th:href="@{/search/user}" class="navbar-item">
-                        Profil
-                    </a>
-                    <a th:href="@{/search/project}" class="navbar-item">
-                        Projet
+                    <a th:each="project : ${user.projects}" th:text="${project.title}" th:hx-put="@{/setPortfolio/{id}}" class="navbar-item">
+
                     </a>
                 </div>
             </div>
-            <div>
-                <iframe
-                        width="1300"
-                        height="650"
-                        src="https://palmes.dev/"></iframe>
-            </div>
-            <a class="column" th:href="@{https://palmes.dev/}">
-                <button class="button is-warning">Voir le Portfolio</button>
-            </a>
-            <progress class="progress is-small mt-6 mb-6" value="100" max="100"></progress>
-            <h1 class="title has-text-grey">Mes projets</h1>
-            <div class="has-text-centered"><div th:replace="~{fragments/search :: projects}"></div></div>
-
+            <span th:if="${user.portfolio != null}">
+                <div>
+                    <iframe
+                            width="1300"
+                            height="650"
+                            th:src="${user.portfolio.link}"></iframe>
+                </div>
+                <a class="column" th:href="${user.portfolio.link}">
+                    <button class="button is-warning">Voir le Portfolio</button>
+                </a>
+            </span>
+            <span th:if="${user.projects != null}">
+                <progress class="progress is-small mt-6 mb-6" value="100" max="100"></progress>
+                <h1 class="title has-text-grey">Projets</h1>
+                <div class="has-text-centered"><div th:replace="~{fragments/search :: projects}"></div></div>
+            </span>
         </div>
     </div>
 </main>
