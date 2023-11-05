@@ -4,7 +4,7 @@
 </head>
 <body>
 <div th:fragment="users" class="columns is-multiline is-centered">
-    <div th:each="user : ${users}" class="column is-half">
+    <div th:each="user : ${users}" class="column is-one-third">
         <div class="card" th:object="${user}">
             <a class="card-content" th:href="@{/user/{id}(id=*{username})}">
                 <div class="content">
@@ -16,7 +16,7 @@
     </div>
 </div>
 <div th:fragment="projects" class="columns is-multiline is-centered">
-    <div th:each="project : ${projects}" class="column is-half">
+    <div th:each="project : ${projects}" class="column is-one-third">
         <div class="card" th:object="${project}">
             <a class="card-content" th:href="@{/project/{id}(id=*{id})}">
                 <div class="content">
