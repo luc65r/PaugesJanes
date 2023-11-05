@@ -5,6 +5,7 @@
 <body>
 <div th:fragment="show" hx-target="this" hx-swap="outerHTML">
     <h1 th:text="${project.title}" class="title"></h1>
+    <p th:text="${project.summary}"></p>
     <a th:href="${project.link}" th:text="${project.link}"></a>
     <div th:utext="${renderedDescription}"></div>
     <button th:hx-get="@{/project/{id}/edit(id=${project.id})}" class="button">
@@ -25,6 +26,13 @@
             <input type="url" th:field="*{link}" th:value="*{link}" required th:errorclass="is-danger" class="input"/>
         </div>
         <p th:if="${#fields.hasErrors('link')}" th:errors="*{link}" class="help is-danger"></p>
+    </div>
+    <div class="field">
+        <label class="label">Résumé</label>
+        <div class="control">
+            <input th:field="*{summary}" th:value="*{summary}" th:errorclass="is-danger" class="input"/>
+        </div>
+        <p th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}" class="help is-danger"></p>
     </div>
     <div class="field">
         <label class="label">Description</label>

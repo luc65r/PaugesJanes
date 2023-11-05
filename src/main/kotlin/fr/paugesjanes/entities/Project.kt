@@ -11,6 +11,8 @@ class Project(
     @Column(nullable = false)
     var link: String,
 
+    var summary: String? = null,
+
     @Lob
     var description: String? = null,
 

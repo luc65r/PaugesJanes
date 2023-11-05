@@ -44,6 +44,9 @@ class ProjectController(
         @field:URL
         val link: String? = null,
 
+        @field:Size(max = 255)
+        val summary: String? = null,
+
         val description: String? = null,
     )
 
@@ -73,6 +76,7 @@ class ProjectController(
             Project(
                 projectInfo.title!!,
                 projectInfo.link!!,
+                projectInfo.summary,
                 projectInfo.description,
             )
         )
@@ -104,6 +108,7 @@ class ProjectController(
         model["projectInfo"] = ProjectInfo(
             project.title,
             project.link,
+            project.summary,
             project.description,
         )
         return "fragments/project :: edit"
@@ -127,6 +132,7 @@ class ProjectController(
         projectRepository.save(project.apply {
             title = projectInfo.title!!
             link = projectInfo.link!!
+            summary = projectInfo.summary
             description = projectInfo.description
         })
         project.description?.let {
