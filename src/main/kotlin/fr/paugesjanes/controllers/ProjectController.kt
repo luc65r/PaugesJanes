@@ -139,6 +139,7 @@ class ProjectController(
             link = projectInfo.link!!
             summary = projectInfo.summary
         })
+        model["isAuthor"] = true
         return "fragments/project :: show"
     }
 
