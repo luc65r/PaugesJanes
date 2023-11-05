@@ -1,9 +1,6 @@
 package fr.paugesjanes.entities
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.ManyToMany
+import jakarta.persistence.*
 import java.util.*
 
 @Entity
@@ -20,7 +17,7 @@ class Project(
     @Column(nullable = false)
     val id: UUID = UUID.randomUUID(),
 ) {
-    @ManyToMany(mappedBy = "projects")
+    @ManyToMany(mappedBy = "projects", fetch = FetchType.LAZY)
     var authors: MutableSet<User> = mutableSetOf()
 
     @ManyToMany

@@ -27,6 +27,6 @@ class User(
     @ManyToOne
     var portfolio: Project? = null
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     var projects: MutableSet<Project> = mutableSetOf()
 }
