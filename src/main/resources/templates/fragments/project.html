@@ -20,11 +20,11 @@
                     <span class="icon"><i class="fas fa-edit"></i></span>
                     <span>Éditer le projet</span>
                 </button>
-                <button th:hx-delete="@{/project/{id}(id=${project.id})}" class="button icon-text is-warning">
+                <button th:hx-delete="@{/project/{id}(id=${project.id})}" hx-confirm="Voulez-vous vraiment supprimer le projet ?" class="button icon-text is-warning">
                     <span class="icon"><i class="fas fa-trash"></i></span>
                     <span>Supprimer le projet</span>
                 </button>
-                <button th:hx-put="@{/project/{id}/quit(id=${project.id})}" class="button icon-text is-danger">
+                <button th:hx-put="@{/project/{id}/quit(id=${project.id})}" hx-confirm="Voulez-vous vraiment quitter le projet ?" class="button icon-text is-danger">
                     <span class="icon"><i class="fas fa-ban"></i></span>
                     <span>Quitter le projet</span>
                 </button>
