@@ -184,7 +184,7 @@ class ProjectController(
     fun favoriteProject(
         @PathVariable project: Project,
         principal: Principal
-    ): HtmxResponse {
+    ) {
         val user = userRepository.findByUsername(principal.name)!!
 
         // Vérifiez si le projet est déjà dans la liste des projets favoris de l'utilisateur
@@ -193,7 +193,5 @@ class ProjectController(
             user.favorite.add(project)
             userRepository.save(user)
         }
-
-        return htmx { redirect("/user/${user.username}") }
     }
 }
