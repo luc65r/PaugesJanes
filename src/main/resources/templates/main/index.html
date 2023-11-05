@@ -10,7 +10,13 @@
     <span th:text="${a}"></span>
     <button class="button is-danger is-rounded is-large">ATNNTETNENTNETIOONNN</button>
     /*/-->
-    <div th:replace="~{fragments/home :: div}"></div>
+    <div class="columns is-vcentered">
+
+
+        <div class="column">
+            <div th:replace="~{fragments/homeCard :: homeCard}"></div>
+        </div>
+
 </main>
 
 </body>
