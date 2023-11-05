@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:hx="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/base :: head}"></head>
+<body>
+<div th:replace="~{fragments/base :: header}"></div>
+<main class="section">
+    <div class="container has-text-centered">
+        <h1 class="title">Rechercher un utilisateur</h1>
+        <div class="field has-addons">
+            <div class="control is-expanded">
+                <input class="input" type="search" name="q" placeholder="Rechercher"
+                       th:hx-get="@{/search/user}" hx-trigger="keyup changed delay:500ms, search"
+                       hx-target="#search-results">
+            </div>
+        </div>
+
+        <div id="search-results">
+            <div th:replace="~{fragments/search :: users}"></div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
