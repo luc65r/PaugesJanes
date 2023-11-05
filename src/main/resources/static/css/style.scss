@@ -21,6 +21,13 @@ $fa-font-path: "/webjars/fortawesome__fontawesome-free/webfonts";
   padding: 20px;
 }
 
-body{
+html{
+  overflow: auto;
   background-image: url('../img/fond.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+button{
+  transition: all 0.3s;
 }
