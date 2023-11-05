@@ -78,18 +78,18 @@
                                 Nouveau projet
                             </a>
                             <!-- Bouton de déconnexion -->
-                            <a class="button is-light" th:href="@{/logout}">
+                            <a class="navbar-item is-large button is-light" th:href="@{/logout}">
                                 Déconnexion
                             </a>
                         </div>
                         <!-- Si l'utilisateur n'est pas authentifié -->
                         <div th:case="${false}" class="buttons">
                             <!-- Bouton d'inscription -->
-                            <a class="button yellow-button" th:href="@{/register}">
+                            <a class="navbar-item is-large button yellow-button" th:href="@{/register}">
                                 <strong>Inscription</strong>
                             </a>
                             <!-- Bouton de connexion -->
-                            <a class="button is-light" th:href="@{/login}">
+                            <a class="navbar-item is-large button is-light" th:href="@{/login}">
                             Connexion
                             </a>
                         </div>
