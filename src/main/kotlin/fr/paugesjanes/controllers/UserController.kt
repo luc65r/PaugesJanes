@@ -32,6 +32,7 @@ class UserController(
         val user = userRepository.findByUsername(username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         model["user"] = user
         model["isOwner"] = principal?.name == username
+        model["projects"] = user.projects
         return "user/show"
     }
 }
