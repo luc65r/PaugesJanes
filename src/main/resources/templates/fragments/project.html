@@ -27,15 +27,21 @@
             </div>
         </div>
     </div>
-    <ul>
-        <li th:each="author : ${project.authors}" th:text="${author.fullName}"></li>
-    </ul>
-    <p class="section" th:text="${project.summary}"></p>
+    <div class="block">
+        <h1 class="title is-5">Auteurs</h1>
+        <div class="buttons">
+            <a class="button" th:each="author : ${project.authors}" th:text="${author.fullName}" th:href="@{/user/{id}(id=${author.username})}"></a>
+        </div>
+    </div>
+    <div class="block">
+        <h1 class="title is-5">Description</h1>
+        <p th:text="${project.summary}"></p>
+    </div>
     <div class="box image is-16by9">
         <iframe th:src="${project.link}" class="has-ratio"></iframe>
     </div>
 </div>
-<div th:fragment="fields">
+<th:block th:fragment="fields">
     <div class="field">
         <label class="label">Titre</label>
         <div class="control">
@@ -51,20 +57,22 @@
         <p th:if="${#fields.hasErrors('link')}" th:errors="*{link}" class="help is-danger"></p>
     </div>
     <div class="field">
-        <label class="label">Résumé</label>
+        <label class="label">Description</label>
         <div class="control">
             <input th:field="*{summary}" th:value="*{summary}" th:errorclass="is-danger" class="input"/>
         </div>
         <p th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}" class="help is-danger"></p>
     </div>
-</div>
+</th:block>
 <div th:fragment="create">
     <div th:each="error : ${#fields.errors('*')}" th:text="${error}" class="notification is-danger"></div>
     <form th:hx-post="@{/project/create}" th:object="${projectInfo}" hx-target="this" hx-swap="outerHTML">
         <div th:replace="~{:: fields}"></div>
-        <div class="field">
+        <div class="field is-grouped">
             <div class="control">
                 <button class="button is-primary">Créer</button>
+            </div>
+            <div class="control">
                 <a class="button" th:href="@{/}">Annuler</a>
             </div>
         </div>
@@ -74,9 +82,11 @@
     <div th:each="error : ${#fields.errors('*')}" th:text="${error}" class="notification is-danger"></div>
     <form th:hx-put="@{/project/{id}(id=${project.id})}" th:object="${projectInfo}" hx-target="this" hx-swap="outerHTML">
         <div th:replace="~{:: fields}"></div>
-        <div class="field">
+        <div class="field is-grouped">
             <div class="control">
                 <button class="button is-primary">Éditer</button>
+            </div>
+            <div class="control">
                 <a class="button" th:href="@{/project/{id}(id=${project.id})}">Annuler</a>
             </div>
         </div>
