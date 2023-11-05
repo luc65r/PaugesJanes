@@ -31,7 +31,4 @@ class MainController(
         model["projects"] = user.favorite
         return "main/favorite"
     }
-
-    @GetMapping("/profil")
-    fun profil(): String = "main/profil"
 }
