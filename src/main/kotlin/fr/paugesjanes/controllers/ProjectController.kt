@@ -153,6 +153,11 @@ class ProjectController(
         if (!project.authors.contains(user))
             throw ResponseStatusException(HttpStatus.FORBIDDEN);
 
+        for (u in project.authors) {
+            u.projects.remove(project)
+            userRepository.save(u)
+        }
+
         projectRepository.delete(project)
         return htmx { redirect("/user/${user.username}") }
     }
@@ -165,11 +170,11 @@ class ProjectController(
         principal: Principal,
     ): HtmxResponse {
         val user = userRepository.findByUsername(principal.name)!!
+        user.projects.remove(project)
         project.authors.remove(user)
+        userRepository.save(user)
         if (project.authors.isEmpty())
             projectRepository.delete(project)
-        else
-            projectRepository.save(project)
         return htmx { redirect("/user/${user.username}") }
     }
 }
