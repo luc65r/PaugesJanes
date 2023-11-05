@@ -4,13 +4,18 @@ import fr.paugesjanes.constraints.EmailFree
 import fr.paugesjanes.constraints.EnableFieldMatchConstraint
 import fr.paugesjanes.constraints.FieldMatch
 import fr.paugesjanes.constraints.UsernameFree
+import fr.paugesjanes.entities.Project
 import fr.paugesjanes.entities.User
+import fr.paugesjanes.htmx
 import fr.paugesjanes.repositories.UserRepository
+import io.github.wimdeblauwe.htmx.spring.boot.mvc.HtmxResponse
+import io.github.wimdeblauwe.htmx.spring.boot.mvc.HxRequest
 import jakarta.validation.Valid
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotNull
 import jakarta.validation.constraints.Size
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.http.HttpStatus
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
@@ -18,6 +23,10 @@ import org.springframework.ui.set
 import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.server.ResponseStatusException
+import java.security.Principal
 
 
 @Controller
@@ -85,5 +94,21 @@ class AccountController(
             )
         )
         return "account/confirmRegister"
+    }
+
+    @HxRequest
+    @PutMapping("/setPortfolio")
+    fun setPortfolio(
+        @RequestParam
+        project: Project,
+        principal: Principal,
+    ): HtmxResponse {
+        val user = userRepository.findByUsername(principal.name)!!
+        if (!project.authors.contains(user))
+            throw ResponseStatusException(HttpStatus.FORBIDDEN)
+
+        user.portfolio = project
+
+        return htmx { redirect("/user/${user.username}") }
     }
 }
