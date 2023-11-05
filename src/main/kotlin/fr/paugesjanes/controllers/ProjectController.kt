@@ -194,4 +194,20 @@ class ProjectController(
             userRepository.save(user)
         }
     }
+
+    @HxRequest
+    @PutMapping("/{project}/unfavorite")
+    fun unfavoriteProject(
+        @PathVariable project: Project,
+        principal: Principal
+    ) {
+        val user = userRepository.findByUsername(principal.name)!!
+
+        // Vérifiez si le projet est dans la liste des projets favoris de l'utilisateur
+        if (user.favorite.contains(project)) {
+            // Si le projet est dans la liste des favoris, retirez-le
+            user.favorite.remove(project)
+            userRepository.save(user)
+        }
+    }
 }
