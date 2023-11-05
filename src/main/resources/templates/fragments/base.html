@@ -34,26 +34,30 @@
 
                 <!-- Liens de navigation -->
                 <a class="navbar-item " th:href="@{/}">
-                    <button class="button is-large is-white is-outlined">Accueil</button>
+                    <button class="button is-medium is-white is-outlined">Accueil</button>
                 </a>
 
                 <!-- Bloc conditionnel basé sur l'authentification de l'utilisateur -->
                 <div th:switch="${#authorization.expression('isAuthenticated')}">
                     <!-- Si l'utilisateur est authentifié -->
-                    <div th:case="${true}" class="navbar-item buttons">
+                    <div th:case="${true}" class="buttons">
                         <!-- Bouton Profil -->
-                        <a class="button is-large is-white is-outlined" th:href="@{/profil}">
-                            Profil
-                        </a>
+                        <div class="navbar-item">
+                            <a class="button is-medium is-white is-outlined" th:href="@{/profil}">
+                                Profil
+                            </a>
+                        </div>
                         <!-- Bouton Favoris -->
-                        <a class="button is-large is-white is-outlined">
-                            Favoris
-                        </a>
+                        <div class="navbar-item">
+                            <a class="button is-medium is-white is-outlined">
+                                Favoris
+                            </a>
+                        </div>
                     </div>
                 </div>
 
                 <div class="navbar-item">
-                    <div class="button is-large is-white is-outlined navbar-item has-dropdown is-hoverable">
+                    <div class="button is-medium is-white is-outlined navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
                             Rechercher
                         </a>
@@ -69,11 +73,11 @@
                 </div>
 
                 <a class="navbar-item" th:href="@{/contact}">
-                    <button class="button is-large is-white is-outlined">Contact</button>
+                    <button class="button is-medium is-white is-outlined">Contact</button>
                 </a>
 
                 <a class="navbar-item" th:href="@{/a_propos}">
-                    <button class="button is-large is-white is-outlined">A propos</button>
+                    <button class="button is-medium is-white is-outlined">A propos</button>
                 </a>
 
             </div>
@@ -85,22 +89,22 @@
                     <div th:switch="${#authorization.expression('isAuthenticated')}">
                         <!-- Si l'utilisateur est authentifié -->
                         <div th:case="${true}" class="buttons">
-                            <a class="navbar-item is-large button yellow-button" th:href="@{/project/create}">
+                            <a class="navbar-item is-medium button yellow-button" th:href="@{/project/create}">
                                 Nouveau projet
                             </a>
                             <!-- Bouton de déconnexion -->
-                            <a class="navbar-item is-large button is-light" th:href="@{/logout}">
+                            <a class="navbar-item is-medium button is-outlined is-white" th:href="@{/logout}">
                                 Déconnexion
                             </a>
                         </div>
                         <!-- Si l'utilisateur n'est pas authentifié -->
                         <div th:case="${false}" class="buttons">
                             <!-- Bouton d'inscription -->
-                            <a class="navbar-item is-large button yellow-button" th:href="@{/register}">
+                            <a class="navbar-item is-medium button yellow-button" th:href="@{/register}">
                                 <strong>Inscription</strong>
                             </a>
                             <!-- Bouton de connexion -->
-                            <a class="navbar-item is-large button is-light" th:href="@{/login}">
+                            <a class="navbar-item is-medium button is-outlined is-white" th:href="@{/login}">
                             Connexion
                             </a>
                         </div>
