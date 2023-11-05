@@ -2,6 +2,7 @@ package fr.paugesjanes.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.invoke
@@ -19,10 +20,10 @@ class SecurityConfig {
                 /* TODO: Fix POST, PUT and DELETE requests and remove this */
                 disable()
             }
-            authorizeRequests {
-                authorize(anyRequest, permitAll)
-                //authorize("/user", authenticated)
-                //authorize("/admin", hasRole("ADMIN"))
+            authorizeHttpRequests {
+                authorize(HttpMethod.GET, "/**", permitAll)
+                authorize("/register", permitAll)
+                authorize(anyRequest, authenticated)
             }
             formLogin {
                 loginPage = "/login"
