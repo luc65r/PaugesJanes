@@ -108,6 +108,7 @@ class AccountController(
             throw ResponseStatusException(HttpStatus.FORBIDDEN)
 
         user.portfolio = project
+        userRepository.save(user)
 
         return htmx { redirect("/user/${user.username}") }
     }
