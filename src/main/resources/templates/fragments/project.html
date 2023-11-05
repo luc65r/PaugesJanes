@@ -47,7 +47,7 @@
     <div class="block">
         <h1 class="title is-5">Auteurs</h1>
         <div class="buttons">
-            <a class="button" th:each="author : ${project.authors}" th:text="${author.fullName}" th:href="@{/user/{id}(id=${author.username})}"></a>
+            <a class="button" th:each="author : ${project.authors}" th:text="${author.username}" th:href="@{/user/{id}(id=${author.username})}"></a>
         </div>
     </div>
     <div class="block">
