@@ -13,19 +13,10 @@
 
         <!-- Zone du logo et du menu "hamburger" pour les petits écrans -->
         <div class="navbar-brand">
-
             <!-- Lien vers la page d'accueil avec un logo -->
             <a class="navbar-item" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
                 <img alt="logo" th:src="@{/img/paugesjaneslogo.png}" width="30rem" height="50rem">
             </a>
-
-            <!-- Menu "hamburger" pour les petits écrans -->
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-
         </div>
 
         <!-- Menu de navigation principal -->
@@ -43,14 +34,8 @@
                     <div th:case="${true}" class="buttons">
                         <!-- Bouton Profil -->
                         <div class="navbar-item">
-                            <a class="button is-medium is-white is-outlined" th:href="@{/profil}">
+                            <a class="button is-medium is-white is-outlined" th:href="@{/user/admin}">
                                 Profil
-                            </a>
-                        </div>
-                        <!-- Bouton Favoris -->
-                        <div class="navbar-item">
-                            <a class="button is-medium is-white is-outlined">
-                                Favoris
                             </a>
                         </div>
                     </div>
@@ -63,7 +48,7 @@
                         </a>
                         <div  class="navbar-dropdown">
                             <a th:href="@{/search/user}" class="navbar-item">
-                                Profil
+                                Utilisateur
                             </a>
                             <a th:href="@{/search/project}" class="navbar-item">
                                 Projet
