@@ -11,18 +11,22 @@
                 <span class="icon"><i class="fas fa-link"></i></span>
                 <span>Voir le site</span>
             </a>
+            <button th:hx-put="@{/project/{id}/favorite(id=${project.id})}" class="button icon-text is-dark">
+                <span class="icon"><i class="fas fa-star"></i></span>
+                <span>Ajouter le projet aux favoris</span>
+            </button>
             <div th:if="${isAuthor}">
                 <button th:hx-get="@{/project/{id}/edit(id=${project.id})}" class="button icon-text is-info">
                     <span class="icon"><i class="fas fa-edit"></i></span>
                     <span>Éditer le projet</span>
                 </button>
+                <button th:hx-delete="@{/project/{id}(id=${project.id})}" class="button icon-text is-warning">
+                    <span class="icon"><i class="fas fa-trash"></i></span>
+                    <span>Supprimer le projet</span>
+                </button>
                 <button th:hx-put="@{/project/{id}/quit(id=${project.id})}" class="button icon-text is-danger">
                     <span class="icon"><i class="fas fa-ban"></i></span>
                     <span>Quitter le projet</span>
-                </button>
-                <button th:hx-delete="@{/project/{id}(id=${project.id})}" class="button icon-text is-danger">
-                    <span class="icon"><i class="fas fa-trash"></i></span>
-                    <span>Supprimer le projet</span>
                 </button>
             </div>
         </div>
