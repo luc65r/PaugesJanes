@@ -6,6 +6,5 @@
 <main class="section">
     <div th:replace="${creating} ? ~{fragments/project :: create} : ~{fragments/project :: show}"></div>
 </main>
-<div th:replace="~{fragments/base :: footer}"></div>
 </body>
 </html>
