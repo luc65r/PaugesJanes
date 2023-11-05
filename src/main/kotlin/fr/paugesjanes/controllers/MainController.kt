@@ -1,14 +1,10 @@
 package fr.paugesjanes.controllers
 
-import fr.paugesjanes.entities.User
 import fr.paugesjanes.repositories.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.ResponseBody
 
 @Controller
 class MainController(
@@ -26,20 +22,4 @@ class MainController(
 
     @GetMapping("/profil")
     fun profil(): String = "main/profil"
-
-    @GetMapping("/search")
-    fun search(model: Model): String {
-        model.addAttribute("users", emptyList<User>()) // Initialize users as an empty list
-        return "main/search"
-    }
-
-    @PostMapping("/search")
-    @ResponseBody
-    fun searchProfile(@RequestParam("search") search: String): List<User> {
-        val usersByUsername = userRepository.findByUsernameContaining(search)
-        val usersByPortfolio = userRepository.findByPortfolioContaining(search)
-
-        val searchResults = usersByUsername + usersByPortfolio
-        return searchResults.distinct()
-    }
 }
