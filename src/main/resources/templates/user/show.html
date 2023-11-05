@@ -12,13 +12,13 @@
         </div>
         <div class="column p-6 is-vcentered">
             <h1 class="title has-text-grey">Portfolio</h1>
-            <div th:if="${!user.projects.isEmpty()}">
+            <div th:if="${#authentication.name == user.username && !user.projects.isEmpty()}">
                 <div class="button is-medium is-white is-outlined navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
                         Choisir mon portfolio
                     </a>
                     <div  class="navbar-dropdown">
-                        <a th:each="project : ${user.projects}" th:text="${project.title}" th:hx-put="@{/setPortfolio/{id}}" class="navbar-item">
+                        <a th:each="project : ${user.projects}" th:text="${project.title}" th:hx-put="@{/setPortfolio(project=${project.id})}" class="navbar-item">
 
                         </a>
                     </div>
