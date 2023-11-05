@@ -12,6 +12,19 @@
         </div>
         <div class="column p-6 is-vcentered">
             <h1 class="title has-text-grey">Mon portfolio</h1>
+            <div class="button is-medium is-white is-outlined navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    Choisir mon portfolio
+                </a>
+                <div  class="navbar-dropdown">
+                    <a th:href="@{/search/user}" class="navbar-item">
+                        Profil
+                    </a>
+                    <a th:href="@{/search/project}" class="navbar-item">
+                        Projet
+                    </a>
+                </div>
+            </div>
             <div>
                 <iframe
                         width="1300"
@@ -23,18 +36,8 @@
             </a>
             <progress class="progress is-small mt-6 mb-6" value="100" max="100"></progress>
             <h1 class="title has-text-grey">Mes projets</h1>
-            <div th:fragment="projects" class="columns is-multiline is-centered">
-                <div th:each="project : ${user.projects}" class="column">
-                    <div class="card" th:object="${project}">
-                        <a class="card-content" th:href="@{/project/{id}(id=*{id})}">
-                            <div class="content">
-                                <p class="title is-4" th:text="*{title}"></p>
-                            </div>
-                            <div class="content" th:text="*{summary}"></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <div class="has-text-centered"><div th:replace="~{fragments/search :: projects}"></div></div>
+
         </div>
     </div>
 </main>
