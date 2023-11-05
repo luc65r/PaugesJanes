@@ -1,6 +1,9 @@
 package fr.paugesjanes.entities
 
-import jakarta.persistence.*
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
+import jakarta.persistence.ManyToMany
 import java.util.*
 
 @Entity
@@ -12,9 +15,6 @@ class Project(
     var link: String,
 
     var summary: String? = null,
-
-    @Lob
-    var description: String? = null,
 
     @Id
     @Column(nullable = false)

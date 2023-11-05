@@ -7,7 +7,6 @@
     <h1 th:text="${project.title}" class="title"></h1>
     <p th:text="${project.summary}"></p>
     <a th:href="${project.link}" th:text="${project.link}"></a>
-    <div th:utext="${renderedDescription}"></div>
     <button th:hx-get="@{/project/{id}/edit(id=${project.id})}" class="button">
         Éditer
     </button>
@@ -33,13 +32,6 @@
             <input th:field="*{summary}" th:value="*{summary}" th:errorclass="is-danger" class="input"/>
         </div>
         <p th:if="${#fields.hasErrors('summary')}" th:errors="*{summary}" class="help is-danger"></p>
-    </div>
-    <div class="field">
-        <label class="label">Description</label>
-        <div class="control">
-            <textarea th:field="*{description}" th:value="*{description}" th:errorclass="is-danger" class="textarea"/>
-        </div>
-        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="help is-danger"></p>
     </div>
 </div>
 <div th:fragment="create">
