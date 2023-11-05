@@ -1,6 +1,7 @@
 package fr.paugesjanes.controllers
 
 import fr.paugesjanes.entities.Project
+import fr.paugesjanes.htmx
 import fr.paugesjanes.repositories.ProjectRepository
 import fr.paugesjanes.repositories.UserRepository
 import fr.paugesjanes.services.MarkdownService
@@ -20,12 +21,6 @@ import org.springframework.validation.BindingResult
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
 import java.security.Principal
-
-inline fun htmx(buildHtmxResponse: HtmxResponse.Builder.() -> Unit): HtmxResponse {
-    val builder = HtmxResponse.Builder()
-    builder.buildHtmxResponse()
-    return builder.build()
-}
 
 @Controller
 @RequestMapping("/project")
@@ -48,6 +43,9 @@ class ProjectController(
         @field:Size(min = 8, max = 255)
         @field:URL
         val link: String? = null,
+
+        @field:Size(max = 255)
+        val summary: String? = null,
 
         val description: String? = null,
     )
@@ -78,6 +76,7 @@ class ProjectController(
             Project(
                 projectInfo.title!!,
                 projectInfo.link!!,
+                projectInfo.summary,
                 projectInfo.description,
             )
         )
@@ -109,6 +108,7 @@ class ProjectController(
         model["projectInfo"] = ProjectInfo(
             project.title,
             project.link,
+            project.summary,
             project.description,
         )
         return "fragments/project :: edit"
@@ -132,6 +132,7 @@ class ProjectController(
         projectRepository.save(project.apply {
             title = projectInfo.title!!
             link = projectInfo.link!!
+            summary = projectInfo.summary
             description = projectInfo.description
         })
         project.description?.let {
