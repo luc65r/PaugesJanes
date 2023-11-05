@@ -20,6 +20,19 @@
                     <span class="icon"><i class="fas fa-edit"></i></span>
                     <span>Éditer le projet</span>
                 </button>
+                <div class="dropdown is-hoverable">
+                    <div class="dropdown-trigger">
+                        <button class="button icon-text">
+                            <span class="icon"><i class="fas fa-edit"></i></span>
+                            <span>Ajouter un auteur</span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" role="menu">
+                        <div class="dropdown-content">
+                            <a th:each="u : ${users}" th:text="${u.username}" th:hx-put="@{/project/{id}/addAuthor(id=${project.id},username=${u.username})}" class="dropdown-item"></a>
+                        </div>
+                    </div>
+                </div>
                 <button th:hx-delete="@{/project/{id}(id=${project.id})}" hx-confirm="Voulez-vous vraiment supprimer le projet ?" class="button icon-text is-warning">
                     <span class="icon"><i class="fas fa-trash"></i></span>
                     <span>Supprimer le projet</span>

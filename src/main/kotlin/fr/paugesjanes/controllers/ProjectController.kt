@@ -1,6 +1,7 @@
 package fr.paugesjanes.controllers
 
 import fr.paugesjanes.entities.Project
+import fr.paugesjanes.entities.User
 import fr.paugesjanes.htmx
 import fr.paugesjanes.repositories.ProjectRepository
 import fr.paugesjanes.repositories.UserRepository
@@ -89,11 +90,13 @@ class ProjectController(
         model: Model,
         principal: Principal?,
     ): String {
-        model["isAuthor"] = if (principal != null) {
+
+        if (principal != null) {
             val user = userRepository.findByUsername(principal.name)
-            project.authors.contains(user)
-        } else {
-            false
+            if (project.authors.contains(user)) {
+                model["isAuthor"] = true
+                model["users"] = getAddableUsers(project)
+            }
         }
         model["project"] = project
         return "project/project"
@@ -140,6 +143,7 @@ class ProjectController(
             summary = projectInfo.summary
         })
         model["isAuthor"] = true
+        model["users"] = getAddableUsers(project)
         return "fragments/project :: show"
     }
 
@@ -194,4 +198,32 @@ class ProjectController(
             userRepository.save(user)
         }
     }
+
+    @HxRequest
+    @PutMapping("/{project}/addAuthor")
+    fun addAuthor(
+        @PathVariable
+        project: Project,
+        @RequestParam
+        username: String,
+        model: Model,
+        principal: Principal,
+    ): HtmxResponse {
+        val user = userRepository.findByUsername(principal.name)!!
+        if (!project.authors.contains(user))
+            throw ResponseStatusException(HttpStatus.FORBIDDEN)
+
+        val authorToAdd = userRepository.findByUsername(username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        authorToAdd.projects.add(project)
+        project.authors.add(authorToAdd)
+        userRepository.save(authorToAdd)
+
+        model["isAuthor"] = true
+        model["users"] = getAddableUsers(project)
+
+        return htmx { view("fragments/project :: show") }
+    }
+
+    private fun getAddableUsers(project: Project): List<User> =
+        userRepository.findAll() - project.authors
 }
