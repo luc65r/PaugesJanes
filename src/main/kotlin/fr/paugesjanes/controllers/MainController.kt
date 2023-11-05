@@ -22,4 +22,11 @@ class MainController(
 
     @GetMapping("/profil")
     fun profil(): String = "main/profil"
+
+    @GetMapping("/user")
+    fun user(): String = "search/user"
+
+    @GetMapping("/project")
+    fun project(): String = "search/project"
+
 }
