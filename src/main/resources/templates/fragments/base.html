@@ -37,7 +37,7 @@
                     <button class="button is-large is-white is-outlined">Accueil</button>
                 </a>
 
-                <a class="navbar-item" th:href="@{profil}">
+                <a class="navbar-item" th:href="@{/profil}">
                     <button class="button is-large is-white is-outlined">Profil</button>
                 </a>
 
@@ -45,17 +45,25 @@
                     <button class="button is-large is-white is-outlined">Favoris</button>
                 </a>
 
-                <a class="navbar-item" th:href="@{search}">
-                    <button class="button is-large is-white is-outlined">Rechercher</button>
-                </a>
-
-                <a class="navbar-item" th:href="@{contact}">
+                <a class="navbar-item" th:href="@{/contact}">
                     <button class="button is-large is-white is-outlined">Contact</button>
                 </a>
 
-                <a class="navbar-item" th:href="@{a_propos}">
+                <a class="navbar-item" th:href="@{/a_propos}">
                     <button class="button is-large is-white is-outlined">A propos</button>
                 </a>
+
+                <a class="navbar-item" th:href="@{/user}">
+                    <button class="button is-large is-white is-outlined">Rechercher</button>
+                </a>
+
+                <div class="navbar-item">
+                    <select class="button is-large is-white is-outlined">
+                        <option hidden>Rechercher</option>
+                        <option><a th:href="@{/user}">Profil</a></option>
+                        <option><a th:href="@{/project}">Projet</a></option>
+                    </select>
+                </div>
 
             </div>
 
