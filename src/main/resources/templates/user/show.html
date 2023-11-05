@@ -12,6 +12,19 @@
         </div>
         <div class="column p-6 is-vcentered">
             <h1 class="title has-text-grey">Mon portfolio</h1>
+            <div class="button is-medium is-white is-outlined navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    Choisir mon portfolio
+                </a>
+                <div  class="navbar-dropdown">
+                    <a th:href="@{/search/user}" class="navbar-item">
+                        Profil
+                    </a>
+                    <a th:href="@{/search/project}" class="navbar-item">
+                        Projet
+                    </a>
+                </div>
+            </div>
             <div>
                 <iframe
                         width="1300"
