@@ -43,7 +43,7 @@
                     <div th:case="${true}" class="buttons">
                         <!-- Bouton Profil -->
                         <div class="navbar-item">
-                            <a class="button is-medium is-white is-outlined" th:href="@{/profil}">
+                            <a class="button is-medium is-white is-outlined" th:href="@{/user/{id}(id=${#authentication.name})}">
                                 Profil
                             </a>
                         </div>
